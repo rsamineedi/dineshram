@@ -319,9 +319,44 @@
     0% { transform: translate(0, 0) rotate(0deg) scale(0.6); opacity: 1; }
     100% { transform: var(--end, translate(0, -120px)) rotate(360deg) scale(1); opacity: 0; }
   }
+
+  /* Entry gate */
+  .gate {
+    position: fixed; inset: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+    background-color: var(--cream);
+    background-image: radial-gradient(900px 500px at 50% 0%, rgba(53,199,255,0.14), transparent 60%);
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+  .gate.unlocked { opacity: 0; visibility: hidden; pointer-events: none; }
+  .gate-card {
+    background: var(--panel); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
+    padding: 2rem; max-width: 420px; width: 100%; text-align: center;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+  }
+  .gate-badge {
+    display: inline-block; background: var(--teal-tint); color: var(--teal-dark);
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 0.3rem 0.8rem; border-radius: 999px; margin-bottom: 0.9rem; font-weight: 600;
+  }
+  .gate-card h2 { font-size: 1.4rem; margin-bottom: 0.9rem; }
+  .gate-q { font-size: 1.05rem; font-weight: 600; margin: 0 0 1.2rem; }
+  .gate-msg { min-height: 1.4rem; margin-top: 1rem; font-weight: 600; }
+  .gate-msg.wrong { color: var(--red); }
+  .gate-msg.correct { color: var(--green); }
 </style>
 </head>
 <body>
+
+<div id="entryGate" class="gate">
+  <div class="gate-card">
+    <span class="gate-badge">🔬 Science Check</span>
+    <h2>Answer this to enter!</h2>
+    <p class="gate-q" id="gateQ">Loading...</p>
+    <div class="options" id="gateOptions"></div>
+    <p class="gate-msg" id="gateMsg"></p>
+  </div>
+</div>
 
 <div class="bg-decor">
   <img class="atom" src="assets/atom.svg" alt="">
@@ -500,6 +535,53 @@
 </main>
 
 <script>
+// ---------- Entry gate ----------
+const scienceGate = [
+  { q: 'Which planet is known as the Red Planet?', options: ['Venus', 'Mars', 'Jupiter', 'Saturn'], a: 1 },
+  { q: 'What gas do humans breathe in to survive?', options: ['Carbon dioxide', 'Nitrogen', 'Oxygen', 'Helium'], a: 2 },
+  { q: 'How many legs does a spider have?', options: ['6', '8', '10', '4'], a: 1 },
+  { q: 'What is the closest star to Earth?', options: ['Proxima Centauri', 'Polaris', 'Sirius', 'The Sun'], a: 3 },
+  { q: 'What state of matter is ice?', options: ['Gas', 'Liquid', 'Solid', 'Plasma'], a: 2 },
+  { q: 'Which planet is famous for its rings?', options: ['Saturn', 'Mercury', 'Earth', 'Mars'], a: 0 },
+  { q: 'What do we call animals that only eat plants?', options: ['Carnivores', 'Omnivores', 'Herbivores', 'Predators'], a: 2 },
+  { q: 'How many bones does an adult human body have?', options: ['126', '160', '206', '260'], a: 2 },
+];
+
+function initGate() {
+  const item = scienceGate[Math.floor(Math.random() * scienceGate.length)];
+  document.getElementById('gateQ').textContent = item.q;
+  const optsEl = document.getElementById('gateOptions');
+  const msgEl = document.getElementById('gateMsg');
+  optsEl.innerHTML = '';
+  item.options.forEach((optText, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.textContent = optText;
+    btn.addEventListener('click', () => {
+      if (i === item.a) {
+        btn.classList.add('correct');
+        optsEl.querySelectorAll('.opt').forEach(b => b.disabled = true);
+        msgEl.textContent = 'Correct! Welcome in 🚀';
+        msgEl.className = 'gate-msg correct';
+        const rect = btn.getBoundingClientRect();
+        confettiBurst(rect.left + rect.width / 2, rect.top);
+        setTimeout(() => {
+          document.getElementById('entryGate').classList.add('unlocked');
+          document.body.style.overflow = '';
+        }, 700);
+      } else {
+        btn.classList.add('wrong');
+        btn.disabled = true;
+        msgEl.textContent = 'Not quite — try another answer!';
+        msgEl.className = 'gate-msg wrong';
+      }
+    });
+    optsEl.appendChild(btn);
+  });
+}
+document.body.style.overflow = 'hidden';
+initGate();
+
 // ---------- Navigation ----------
 const views = document.querySelectorAll('.view');
 const navBtns = document.querySelectorAll('.nav-btn');
