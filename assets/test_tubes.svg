@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 230">
+<path d="M45 35v125a35 35 0 0 0 70 0V35M125 35v125a35 35 0 0 0 70 0V35M205 35v125a35 35 0 0 0 70 0V35" fill="none" stroke="#b9d8ff" stroke-width="7"/>
+<path d="M52 112h56v48a28 28 0 0 1-56 0zM132 95h56v65a28 28 0 0 1-56 0zM212 125h56v35a28 28 0 0 1-56 0z" fill="#35c7ff" fill-opacity=".65"/>
+<path d="M35 28h90M115 28h90M195 28h90" stroke="#8de7ff" stroke-width="9" stroke-linecap="round"/>
+</svg>

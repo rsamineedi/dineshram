@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 220">
+<g stroke="#668bd0" stroke-width="5"><path d="M65 110L140 55 215 105 180 175 95 170zM140 55l40 120"/></g>
+<g fill="#122d5b" stroke="#35c7ff" stroke-width="5"><circle cx="65" cy="110" r="22"/><circle cx="140" cy="55" r="22"/><circle cx="215" cy="105" r="22"/><circle cx="180" cy="175" r="22"/><circle cx="95" cy="170" r="22"/></g>
+<g fill="#8de7ff" font-family="Arial" font-size="15" text-anchor="middle"><text x="65" y="115">C</text><text x="140" y="60">O</text><text x="215" y="110">N</text><text x="180" y="180">H</text><text x="95" y="175">C</text></g>
+</svg>

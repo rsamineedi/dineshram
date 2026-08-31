@@ -9,36 +9,68 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #f2ead9;
-    --cream-deep: #ece1cb;
-    --panel: #fffaf1;
-    --ink: #2a2620;
-    --muted: #766f63;
-    --teal: #2f5d50;
-    --teal-dark: #21453b;
-    --teal-tint: #dcece5;
-    --orange: #e8734a;
-    --green: #1f8a55;
-    --red: #c0392b;
-    --yellow: #ffc84a;
+    --cream: #060c1f;
+    --cream-deep: #0a1738;
+    --panel: #0d1b3f;
+    --panel-2: #10224e;
+    --ink: #eaf2ff;
+    --muted: #93a8d1;
+    --teal: #35c7ff;
+    --teal-dark: #bdeeff;
+    --teal-tint: rgba(53,199,255,0.16);
+    --orange: #6a5cd8;
+    --green: #35d999;
+    --red: #ff6b6b;
+    --yellow: #ffe066;
     --sky: #4fb3e0;
     --pink: #ef6fa0;
-    color-scheme: light;
+    color-scheme: dark;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; min-height: 100%; overflow-x: hidden; }
   body {
     font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--cream);
+    background-color: var(--cream);
+    background-image:
+      radial-gradient(1.5px 1.5px at 8% 12%, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 22% 68%, #fff, transparent),
+      radial-gradient(1px 1px at 38% 24%, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 54% 82%, #fff, transparent),
+      radial-gradient(1px 1px at 66% 14%, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 78% 58%, #fff, transparent),
+      radial-gradient(1px 1px at 91% 32%, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 12% 90%, #fff, transparent),
+      radial-gradient(1px 1px at 47% 46%, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 85% 88%, #fff, transparent),
+      radial-gradient(900px 500px at 10% 5%, rgba(53,199,255,0.10), transparent 60%),
+      radial-gradient(800px 450px at 90% 90%, rgba(106,92,216,0.12), transparent 60%);
+    background-repeat: repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, no-repeat, no-repeat;
+    background-size: 100% 1400px, 100% 1400px, 100% 1400px, 100% 1400px, 100% 1400px, 100% 1400px, 100% 1400px, 100% 1400px, 100% 1400px, 100% 1400px, auto, auto;
+    background-attachment: fixed;
     color: var(--ink);
     min-height: 100vh;
   }
   h1, h2, h3 { font-family: "Fredoka", sans-serif; font-weight: 600; margin: 0; }
   em {
-    font-style: normal; color: var(--pink); font-family: "Fredoka", sans-serif; font-weight: 600;
+    font-style: normal; color: var(--teal); font-family: "Fredoka", sans-serif; font-weight: 600;
     text-decoration: underline; text-decoration-style: wavy; text-decoration-color: var(--yellow);
     text-underline-offset: 4px;
   }
+
+  /* Space decorations */
+  .bg-decor { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+  .bg-decor img {
+    position: absolute; opacity: 0.85; filter: drop-shadow(0 0 18px rgba(53,199,255,0.15));
+  }
+  .bg-decor .atom { top: -20px; left: -30px; width: 220px; animation: floaty 7s ease-in-out infinite; }
+  .bg-decor .rocket { top: 60px; right: 4%; width: 130px; transform: rotate(18deg); animation: floaty 6s ease-in-out infinite 0.5s; }
+  .bg-decor .planet { top: 480px; right: -20px; width: 220px; animation: floaty 8s ease-in-out infinite 1s; }
+  .bg-decor .flask { top: 620px; left: -10px; width: 150px; animation: floaty 6.5s ease-in-out infinite 0.3s; }
+  .bg-decor .microscope { top: 1000px; right: 2%; width: 170px; animation: floaty 7.5s ease-in-out infinite 0.8s; }
+  .bg-decor .test-tubes { top: 1180px; right: -20px; width: 220px; animation: floaty 6s ease-in-out infinite 1.4s; }
+  .bg-decor .molecule { top: 900px; left: -20px; width: 200px; opacity: 0.4; animation: floaty 9s ease-in-out infinite; }
+  @media (max-width: 900px) { .bg-decor { display: none; } }
+  header.site, main { position: relative; z-index: 1; }
 
   /* Header */
   header.site {
@@ -47,16 +79,23 @@
     align-items: center;
     gap: 0.9rem;
     padding: 1.75rem 2rem 1.5rem;
-    border-bottom: 1px solid rgba(42,38,32,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
     max-width: 1080px;
     margin: 0 auto;
   }
   .brand { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
+  .avatar-ring { position: relative; display: inline-block; }
+  .avatar-ring::before {
+    content: ''; position: absolute; inset: -16px; border-radius: 50%;
+    border: 1px dashed rgba(53,199,255,0.55);
+    animation: spin 14s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
   .brand .mark {
     width: 144px; height: 144px; border-radius: 50%;
     display: block; object-fit: cover; object-position: center 25%;
     border: 4px solid var(--teal);
-    box-shadow: 0 4px 12px rgba(42,38,32,0.15);
+    box-shadow: 0 0 30px rgba(53,199,255,0.4);
   }
   .brand .word { font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 1.15rem; }
   nav.site { display: flex; gap: 1.6rem; }
@@ -65,7 +104,7 @@
     text-decoration: none; cursor: pointer; padding-bottom: 4px;
     border-bottom: 2px solid transparent;
   }
-  nav.site a.active, nav.site a:hover { color: var(--ink); border-color: var(--orange); }
+  nav.site a.active, nav.site a:hover { color: var(--ink); border-color: var(--teal); }
 
   main { max-width: 1080px; margin: 0 auto; padding: 0 2rem 4rem; }
   @media (max-width: 720px) { main { padding: 0 1.25rem 3rem; } header.site { padding: 1.1rem 1.25rem; } }
@@ -89,14 +128,14 @@
     max-width: 34rem; margin: 1.1rem auto 0;
   }
   .doodle {
-    position: absolute; font-size: 1.8rem; opacity: 0.9;
+    position: absolute; width: 28px; opacity: 0.9;
     animation: floaty 4s ease-in-out infinite;
     pointer-events: none; user-select: none;
   }
   .doodle.d1 { top: -10px; left: 8%; animation-delay: 0s; }
-  .doodle.d2 { top: 10px; right: 10%; font-size: 1.4rem; animation-delay: 0.6s; }
-  .doodle.d3 { bottom: -10px; left: 20%; font-size: 1.3rem; animation-delay: 1.2s; }
-  .doodle.d4 { bottom: 0; right: 20%; animation-delay: 1.8s; }
+  .doodle.d2 { top: 10px; right: 10%; width: 22px; animation-delay: 0.6s; }
+  .doodle.d3 { bottom: -10px; left: 20%; width: 20px; animation-delay: 1.2s; }
+  .doodle.d4 { bottom: 0; right: 20%; width: 26px; animation-delay: 1.8s; }
   @media (max-width: 640px) { .doodle { display: none; } }
   @keyframes floaty {
     0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -125,9 +164,9 @@
   .mockup {
     background: var(--panel);
     border-radius: 16px;
-    box-shadow: 0 20px 45px rgba(42,38,32,0.12);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.55);
     overflow: hidden;
-    border: 1px solid rgba(42,38,32,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
   }
   .mockup-bar {
     display: flex; align-items: center; gap: 0.4rem;
@@ -167,14 +206,15 @@
 
   /* CTA band */
   .cta-band {
-    background: var(--teal-dark); border-radius: 20px; color: #f2ead9;
+    background: var(--panel-2); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; color: var(--ink);
     padding: 2.4rem 2.2rem; margin-top: 4.5rem;
     display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+    box-shadow: 0 0 40px rgba(53,199,255,0.08);
   }
-  .cta-band h2 { font-size: clamp(1.5rem, 3.6vw, 2rem); color: #fdf8ee; }
-  .cta-band p { margin: 0.5rem 0 0; color: #cfe0d8; }
+  .cta-band h2 { font-size: clamp(1.5rem, 3.6vw, 2rem); color: var(--ink); }
+  .cta-band p { margin: 0.5rem 0 0; color: var(--muted); }
   .cta-band button {
-    border: none; background: #fdf8ee; color: var(--teal-dark);
+    border: none; background: var(--teal); color: #06182f;
     padding: 0.85rem 1.6rem; border-radius: 999px; font-weight: 700;
     font-size: 1rem; cursor: pointer; white-space: nowrap;
     transition: transform 0.15s ease;
@@ -192,7 +232,7 @@
     display: flex; align-items: center; justify-content: center;
     transition: transform 0.18s ease, box-shadow 0.18s ease;
   }
-  .tile:hover { transform: translateY(-4px) rotate(-1deg) scale(1.03); box-shadow: 0 12px 24px rgba(42,38,32,0.18); }
+  .tile:hover { transform: translateY(-4px) rotate(-1deg) scale(1.03); box-shadow: 0 12px 28px rgba(0,0,0,0.5); }
   .tile:active { transform: scale(0.96); }
   .tile.math { background: var(--teal); }
   .tile.gk { background: var(--orange); }
@@ -200,9 +240,10 @@
   /* App cards (Math / GK) */
   .card {
     background: var(--panel);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 20px;
     padding: 1.9rem;
-    box-shadow: 0 10px 28px rgba(42,38,32,0.08);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     margin: 2.5rem auto 0;
     max-width: 640px;
   }
@@ -210,8 +251,8 @@
 
   .controls { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.4rem; justify-content: center; }
   select {
-    padding: 0.5rem 0.8rem; border-radius: 10px; border: 1px solid rgba(42,38,32,0.15);
-    background: #fff; font-size: 0.95rem; color: var(--ink); font-family: inherit;
+    padding: 0.5rem 0.8rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2);
+    background: var(--panel-2); font-size: 0.95rem; color: var(--ink); font-family: inherit;
   }
 
   .stats { display: flex; justify-content: center; gap: 1.7rem; margin-bottom: 1.1rem; font-size: 0.92rem; color: var(--muted); }
@@ -225,7 +266,8 @@
   .answer-row { display: flex; gap: 0.6rem; justify-content: center; }
   .answer-row input {
     width: 8rem; font-size: 1.4rem; text-align: center; padding: 0.6rem;
-    border-radius: 12px; border: 2px solid rgba(42,38,32,0.15); font-family: inherit;
+    border-radius: 12px; border: 2px solid rgba(255,255,255,0.2); font-family: inherit;
+    background: var(--panel-2); color: var(--ink);
   }
   .answer-row input:focus { outline: none; border-color: var(--teal); }
   button.primary {
@@ -233,7 +275,7 @@
     font-size: 1.05rem; font-weight: 700; color: #fff; background: var(--teal); cursor: pointer;
     transition: transform 0.15s ease, background 0.15s ease;
   }
-  button.primary:hover { background: var(--teal-dark); transform: scale(1.05); }
+  button.primary:hover { background: #1c86b8; transform: scale(1.05); }
   button.primary:active { transform: scale(0.95); }
   .feedback { text-align: center; margin-top: 1rem; font-size: 1.05rem; font-weight: 600; min-height: 1.6rem; }
   .feedback.correct { color: var(--green); }
@@ -243,13 +285,13 @@
   .options { display: grid; gap: 0.7rem; }
   .opt {
     text-align: left; padding: 0.8rem 1rem; border-radius: 12px;
-    border: 2px solid rgba(42,38,32,0.12); background: #fff;
+    border: 2px solid rgba(255,255,255,0.14); background: var(--panel-2);
     font-size: 1rem; cursor: pointer; font-family: inherit; color: var(--ink);
     transition: transform 0.12s ease, border-color 0.12s ease;
   }
   .opt:hover:not([disabled]) { border-color: var(--teal); transform: translateX(3px); }
-  .opt.correct { background: var(--teal-tint); border-color: var(--green); animation: pop 0.3s ease; }
-  .opt.wrong { background: #fbe4e0; border-color: var(--red); }
+  .opt.correct { background: rgba(53,217,153,0.16); border-color: var(--green); animation: pop 0.3s ease; }
+  .opt.wrong { background: rgba(255,107,107,0.16); border-color: var(--red); }
   .opt[disabled] { cursor: default; }
   @keyframes pop { 0% { transform: scale(1); } 50% { transform: scale(1.04); } 100% { transform: scale(1); } }
 
@@ -262,9 +304,10 @@
   .star-rating { text-align: center; font-size: 2rem; margin: 0.6rem 0; letter-spacing: 0.2rem; }
   .streak-toast {
     position: fixed; left: 50%; bottom: 2rem; transform: translateX(-50%) translateY(20px);
-    background: var(--teal-dark); color: #fdf8ee; font-family: "Fredoka", sans-serif;
+    background: var(--panel-2); color: var(--ink); font-family: "Fredoka", sans-serif;
     font-weight: 600; padding: 0.7rem 1.3rem; border-radius: 999px;
-    box-shadow: 0 10px 24px rgba(0,0,0,0.2); opacity: 0; transition: all 0.3s ease; z-index: 10;
+    border: 1px solid rgba(53,199,255,0.3);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.4); opacity: 0; transition: all 0.3s ease; z-index: 10;
     pointer-events: none;
   }
   .streak-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
@@ -280,10 +323,22 @@
 </head>
 <body>
 
+<div class="bg-decor">
+  <img class="atom" src="assets/atom.svg" alt="">
+  <img class="rocket" src="assets/rocket.svg" alt="">
+  <img class="planet" src="assets/planet.svg" alt="">
+  <img class="flask" src="assets/flask.svg" alt="">
+  <img class="microscope" src="assets/microscope.svg" alt="">
+  <img class="test-tubes" src="assets/test_tubes.svg" alt="">
+  <img class="molecule" src="assets/molecule.svg" alt="">
+</div>
+
 <header class="site">
   <div class="brand">
     <span class="word">Dinesh Ram's Corner</span>
-    <img class="mark" src="dinesh-avatar.png" alt="Dinesh Ram">
+    <span class="avatar-ring">
+      <img class="mark" src="dinesh-avatar.png" alt="Dinesh Ram">
+    </span>
   </div>
   <nav class="site">
     <a class="nav-btn active" data-view="home">How it works</a>
@@ -297,10 +352,10 @@
   <!-- HOME -->
   <section id="home" class="view active">
     <div class="hero-wrap">
-      <span class="doodle d1">⭐</span>
-      <span class="doodle d2">🎈</span>
-      <span class="doodle d3">✨</span>
-      <span class="doodle d4">🌈</span>
+      <img class="doodle d1" src="assets/star.svg" alt="">
+      <img class="doodle d2" src="assets/small_atom.svg" alt="">
+      <img class="doodle d3" src="assets/star.svg" alt="">
+      <img class="doodle d4" src="assets/star.svg" alt="">
       <div class="eyebrow">Learning Corner</div>
       <h1 class="hero-title">Learn, play, and <em>grow</em> — one step at a time.</h1>
       <p class="hero-sub">Two fun activities. No sign-in needed. Everything happens right here in your browser.</p>
