@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dinesh Ram's Learning Corner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f2ead9;
+    --cream-deep: #ece1cb;
+    --panel: #fffaf1;
+    --ink: #2a2620;
+    --muted: #766f63;
+    --teal: #2f5d50;
+    --teal-dark: #21453b;
+    --teal-tint: #dcece5;
+    --orange: #e8734a;
+    --green: #1f8a55;
+    --red: #c0392b;
+    --yellow: #ffc84a;
+    --sky: #4fb3e0;
+    --pink: #ef6fa0;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; overflow-x: hidden; }
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+  h1, h2, h3 { font-family: "Fredoka", sans-serif; font-weight: 600; margin: 0; }
+  em {
+    font-style: normal; color: var(--pink); font-family: "Fredoka", sans-serif; font-weight: 600;
+    text-decoration: underline; text-decoration-style: wavy; text-decoration-color: var(--yellow);
+    text-underline-offset: 4px;
+  }
+
+  /* Header */
+  header.site {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2rem;
+    border-bottom: 1px solid rgba(42,38,32,0.08);
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .brand { display: flex; align-items: center; gap: 0.6rem; }
+  .brand .mark {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--sky)); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 1.1rem;
+  }
+  .brand .word { font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 1.15rem; }
+  nav.site { display: flex; gap: 1.6rem; }
+  nav.site a {
+    font-size: 0.92rem; font-weight: 500; color: var(--muted);
+    text-decoration: none; cursor: pointer; padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+  }
+  nav.site a.active, nav.site a:hover { color: var(--ink); border-color: var(--orange); }
+
+  main { max-width: 1080px; margin: 0 auto; padding: 0 2rem 4rem; }
+  @media (max-width: 720px) { main { padding: 0 1.25rem 3rem; } header.site { padding: 1.1rem 1.25rem; } }
+
+  .view { display: none; }
+  .view.active { display: block; animation: fadeIn 0.25s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  /* Hero */
+  .hero-wrap { position: relative; padding-top: 3rem; }
+  .eyebrow {
+    text-align: center; text-transform: uppercase; letter-spacing: 0.12em;
+    font-size: 0.78rem; font-weight: 600; color: var(--teal);
+  }
+  .hero-title {
+    text-align: center; font-size: clamp(2rem, 5.5vw, 3.2rem); line-height: 1.2;
+    margin: 0.7rem auto 0; max-width: 42rem; position: relative; z-index: 1;
+  }
+  .hero-sub {
+    text-align: center; color: var(--muted); font-size: 1.08rem;
+    max-width: 34rem; margin: 1.1rem auto 0;
+  }
+  .doodle {
+    position: absolute; font-size: 1.8rem; opacity: 0.9;
+    animation: floaty 4s ease-in-out infinite;
+    pointer-events: none; user-select: none;
+  }
+  .doodle.d1 { top: -10px; left: 8%; animation-delay: 0s; }
+  .doodle.d2 { top: 10px; right: 10%; font-size: 1.4rem; animation-delay: 0.6s; }
+  .doodle.d3 { bottom: -10px; left: 20%; font-size: 1.3rem; animation-delay: 1.2s; }
+  .doodle.d4 { bottom: 0; right: 20%; animation-delay: 1.8s; }
+  @media (max-width: 640px) { .doodle { display: none; } }
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(8deg); }
+  }
+
+  /* Steps */
+  .step { display: flex; align-items: center; gap: 3rem; margin-top: 5rem; }
+  .step.reverse { flex-direction: row-reverse; }
+  .step-text, .step-mock { flex: 1; min-width: 0; }
+  @media (max-width: 800px) {
+    .step, .step.reverse { flex-direction: column; gap: 1.75rem; margin-top: 3.5rem; }
+  }
+  .step-badge {
+    display: inline-block; font-size: 0.85rem; font-weight: 600;
+    background: var(--teal-tint); color: var(--teal-dark);
+    padding: 0.3rem 0.85rem; border-radius: 999px; margin-bottom: 0.9rem;
+  }
+  .step-text h2 { font-size: clamp(1.5rem, 3.4vw, 2.1rem); line-height: 1.2; }
+  .step-text p { color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0.9rem 0 1rem; }
+  .checklist { list-style: none; padding: 0; margin: 0; }
+  .checklist li { color: var(--ink); font-size: 0.95rem; margin-bottom: 0.5rem; }
+  .checklist li::before { content: "✓ "; color: var(--teal); font-weight: 700; }
+
+  /* Browser mockup */
+  .mockup {
+    background: var(--panel);
+    border-radius: 16px;
+    box-shadow: 0 20px 45px rgba(42,38,32,0.12);
+    overflow: hidden;
+    border: 1px solid rgba(42,38,32,0.06);
+  }
+  .mockup-bar {
+    display: flex; align-items: center; gap: 0.4rem;
+    background: var(--cream-deep); padding: 0.6rem 0.9rem;
+  }
+  .mockup-bar .dot { width: 9px; height: 9px; border-radius: 50%; }
+  .mockup-bar .dot.r { background: #e58a7a; }
+  .mockup-bar .dot.y { background: #e8c07a; }
+  .mockup-bar .dot.g { background: #8fbf8f; }
+  .mockup-bar .url {
+    flex: 1; text-align: center; font-size: 0.72rem; color: var(--muted);
+  }
+  .mockup-body { padding: 1.4rem; }
+
+  .mock-tiles { display: flex; gap: 0.8rem; }
+  .mock-tile {
+    flex: 1; border-radius: 12px; padding: 1.4rem 0.8rem; text-align: center;
+    font-size: 0.95rem; font-weight: 700; color: #fff;
+  }
+  .mock-tile.a { background: var(--teal); }
+  .mock-tile.b { background: var(--orange); }
+
+  .mock-problem { text-align: center; }
+  .mock-problem .expr { font-family: "Fredoka", sans-serif; font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .mock-answer {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--cream); border-radius: 10px; padding: 0.5rem 0.9rem;
+    font-size: 1rem; font-weight: 600;
+  }
+  .mock-check { color: var(--green); font-weight: 700; margin-top: 0.7rem; font-size: 0.9rem; }
+
+  .mock-stats { display: flex; gap: 0.7rem; }
+  .mock-stat { flex: 1; background: var(--cream); border-radius: 10px; padding: 0.8rem; text-align: center; }
+  .mock-stat.hi { background: var(--teal-tint); }
+  .mock-stat .num { font-family: "Fredoka", sans-serif; font-size: 1.3rem; color: var(--teal-dark); }
+  .mock-stat .lbl { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+
+  /* CTA band */
+  .cta-band {
+    background: var(--teal-dark); border-radius: 20px; color: #f2ead9;
+    padding: 2.4rem 2.2rem; margin-top: 4.5rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+  }
+  .cta-band h2 { font-size: clamp(1.5rem, 3.6vw, 2rem); color: #fdf8ee; }
+  .cta-band p { margin: 0.5rem 0 0; color: #cfe0d8; }
+  .cta-band button {
+    border: none; background: #fdf8ee; color: var(--teal-dark);
+    padding: 0.85rem 1.6rem; border-radius: 999px; font-weight: 700;
+    font-size: 1rem; cursor: pointer; white-space: nowrap;
+    transition: transform 0.15s ease;
+  }
+  .cta-band button:hover { transform: scale(1.06) rotate(-1deg); }
+  .cta-band button:active { transform: scale(0.95); }
+
+  /* Tiles (launch) */
+  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; }
+  @media (max-width: 520px) { .tiles { grid-template-columns: 1fr; } }
+  .tile {
+    border-radius: 18px; padding: 2rem 1.2rem; text-align: center;
+    color: #fff; cursor: pointer; border: none; font-size: 1.4rem; font-weight: 700;
+    font-family: "Fredoka", sans-serif;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .tile:hover { transform: translateY(-4px) rotate(-1deg) scale(1.03); box-shadow: 0 12px 24px rgba(42,38,32,0.18); }
+  .tile:active { transform: scale(0.96); }
+  .tile.math { background: var(--teal); }
+  .tile.gk { background: var(--orange); }
+
+  /* App cards (Math / GK) */
+  .card {
+    background: var(--panel);
+    border-radius: 20px;
+    padding: 1.9rem;
+    box-shadow: 0 10px 28px rgba(42,38,32,0.08);
+    margin: 2.5rem auto 0;
+    max-width: 640px;
+  }
+  .card h2 { text-align: center; font-size: 1.6rem; margin-bottom: 1.3rem; }
+
+  .controls { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.4rem; justify-content: center; }
+  select {
+    padding: 0.5rem 0.8rem; border-radius: 10px; border: 1px solid rgba(42,38,32,0.15);
+    background: #fff; font-size: 0.95rem; color: var(--ink); font-family: inherit;
+  }
+
+  .stats { display: flex; justify-content: center; gap: 1.7rem; margin-bottom: 1.1rem; font-size: 0.92rem; color: var(--muted); }
+  .stats b { color: var(--teal-dark); font-size: 1.15rem; font-family: "Fredoka", sans-serif; }
+
+  .problem {
+    text-align: center; font-family: "Fredoka", sans-serif;
+    font-size: clamp(2rem, 8vw, 2.7rem); font-weight: 600;
+    margin: 1rem 0 1.6rem; color: var(--teal-dark);
+  }
+  .answer-row { display: flex; gap: 0.6rem; justify-content: center; }
+  .answer-row input {
+    width: 8rem; font-size: 1.4rem; text-align: center; padding: 0.6rem;
+    border-radius: 12px; border: 2px solid rgba(42,38,32,0.15); font-family: inherit;
+  }
+  .answer-row input:focus { outline: none; border-color: var(--teal); }
+  button.primary {
+    border: none; padding: 0.7rem 1.4rem; border-radius: 999px;
+    font-size: 1.05rem; font-weight: 700; color: #fff; background: var(--teal); cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  button.primary:hover { background: var(--teal-dark); transform: scale(1.05); }
+  button.primary:active { transform: scale(0.95); }
+  .feedback { text-align: center; margin-top: 1rem; font-size: 1.05rem; font-weight: 600; min-height: 1.6rem; }
+  .feedback.correct { color: var(--green); }
+  .feedback.wrong { color: var(--red); }
+
+  .question { font-size: 1.2rem; font-weight: 600; margin-bottom: 1.25rem; text-align: center; }
+  .options { display: grid; gap: 0.7rem; }
+  .opt {
+    text-align: left; padding: 0.8rem 1rem; border-radius: 12px;
+    border: 2px solid rgba(42,38,32,0.12); background: #fff;
+    font-size: 1rem; cursor: pointer; font-family: inherit; color: var(--ink);
+    transition: transform 0.12s ease, border-color 0.12s ease;
+  }
+  .opt:hover:not([disabled]) { border-color: var(--teal); transform: translateX(3px); }
+  .opt.correct { background: var(--teal-tint); border-color: var(--green); animation: pop 0.3s ease; }
+  .opt.wrong { background: #fbe4e0; border-color: var(--red); }
+  .opt[disabled] { cursor: default; }
+  @keyframes pop { 0% { transform: scale(1); } 50% { transform: scale(1.04); } 100% { transform: scale(1); } }
+
+  .next-row { text-align: center; margin-top: 1.25rem; }
+  .topic-tag {
+    display: inline-block; font-size: 0.72rem; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--teal-dark); background: var(--teal-tint);
+    padding: 0.2rem 0.7rem; border-radius: 999px; margin-bottom: 0.9rem;
+  }
+  .star-rating { text-align: center; font-size: 2rem; margin: 0.6rem 0; letter-spacing: 0.2rem; }
+  .streak-toast {
+    position: fixed; left: 50%; bottom: 2rem; transform: translateX(-50%) translateY(20px);
+    background: var(--teal-dark); color: #fdf8ee; font-family: "Fredoka", sans-serif;
+    font-weight: 600; padding: 0.7rem 1.3rem; border-radius: 999px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.2); opacity: 0; transition: all 0.3s ease; z-index: 10;
+    pointer-events: none;
+  }
+  .streak-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .confetti-piece {
+    position: fixed; top: 40%; font-size: 1.4rem; pointer-events: none; z-index: 20;
+    animation: confetti-burst 0.9s ease-out forwards;
+  }
+  @keyframes confetti-burst {
+    0% { transform: translate(0, 0) rotate(0deg) scale(0.6); opacity: 1; }
+    100% { transform: var(--end, translate(0, -120px)) rotate(360deg) scale(1); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="brand">
+    <span class="mark">D</span>
+    <span class="word">Dinesh Ram's Corner</span>
+  </div>
+  <nav class="site">
+    <a class="nav-btn active" data-view="home">How it works</a>
+    <a class="nav-btn" data-view="math">Math</a>
+    <a class="nav-btn" data-view="gk">General Knowledge</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HOME -->
+  <section id="home" class="view active">
+    <div class="hero-wrap">
+      <span class="doodle d1">⭐</span>
+      <span class="doodle d2">🎈</span>
+      <span class="doodle d3">✨</span>
+      <span class="doodle d4">🌈</span>
+      <div class="eyebrow">Learning Corner</div>
+      <h1 class="hero-title">Learn, play, and <em>grow</em> — one step at a time.</h1>
+      <p class="hero-sub">Two fun activities. No sign-in needed. Everything happens right here in your browser.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-text">
+        <span class="step-badge">Step 01</span>
+        <h2>Pick an activity</h2>
+        <p>Choose Math Practice to sharpen your number skills, or General Knowledge to explore fun facts about the world.</p>
+        <ul class="checklist">
+          <li>Math practice with 4 operations</li>
+          <li>General Knowledge quiz</li>
+          <li>New questions every time you play</li>
+        </ul>
+      </div>
+      <div class="step-mock">
+        <div class="mockup">
+          <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url">dineshram.in</span></div>
+          <div class="mockup-body">
+            <div class="mock-tiles">
+              <div class="mock-tile a">Math</div>
+              <div class="mock-tile b">GK</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step reverse">
+      <div class="step-text">
+        <span class="step-badge">Step 02</span>
+        <h2>Answer &amp; get instant feedback</h2>
+        <p>Solve the problem or pick an answer. You'll know right away if you got it right — and if not, you'll see the correct answer so you can learn from it.</p>
+        <ul class="checklist">
+          <li>Instant right / wrong feedback</li>
+          <li>Correct answer shown when you miss one</li>
+          <li>No pressure — go at your own pace</li>
+        </ul>
+      </div>
+      <div class="step-mock">
+        <div class="mockup">
+          <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url">dineshram.in</span></div>
+          <div class="mockup-body mock-problem">
+            <div class="expr">7 × 8 = ?</div>
+            <span class="mock-answer">56</span>
+            <div class="mock-check">✓ Correct! 🎉</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-text">
+        <span class="step-badge">Step 03</span>
+        <h2>Track your score</h2>
+        <p>Watch your score and streak grow as you play. Your best score is saved automatically, so you can come back anytime and try to beat it.</p>
+        <ul class="checklist">
+          <li>Score &amp; streak counter</li>
+          <li>Best score saved automatically</li>
+          <li>Come back anytime to beat your record</li>
+        </ul>
+      </div>
+      <div class="step-mock">
+        <div class="mockup">
+          <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url">dineshram.in</span></div>
+          <div class="mockup-body">
+            <div class="mock-stats">
+              <div class="mock-stat"><div class="num">12</div><div class="lbl">Score</div></div>
+              <div class="mock-stat hi"><div class="num">9</div><div class="lbl">Streak</div></div>
+              <div class="mock-stat"><div class="num">15</div><div class="lbl">Best</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-band">
+      <div>
+        <h2>Ready to play and learn?</h2>
+        <p>Takes 10 seconds. No sign-in. Just for fun.</p>
+      </div>
+      <button id="startBtn">Start Learning →</button>
+    </div>
+
+    <div class="tiles">
+      <button class="tile math" data-view="math">Math</button>
+      <button class="tile gk" data-view="gk">GK</button>
+    </div>
+  </section>
+
+  <!-- MATH -->
+  <section id="math" class="view">
+    <div class="card">
+      <h2>Math Practice</h2>
+      <div class="controls">
+        <select id="mathOp">
+          <option value="mixed">Mixed</option>
+          <option value="+">Addition (+)</option>
+          <option value="-">Subtraction (−)</option>
+          <option value="*">Multiplication (×)</option>
+          <option value="/">Division (÷)</option>
+        </select>
+        <select id="mathLevel">
+          <option value="easy">Easy</option>
+          <option value="medium" selected>Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+      <div class="stats">
+        <div>Score <b id="mathScore">0</b></div>
+        <div>Streak <b id="mathStreak">0</b></div>
+        <div>Best <b id="mathBest">0</b></div>
+      </div>
+      <div class="problem" id="mathProblem">— </div>
+      <div class="answer-row">
+        <input type="number" id="mathInput" placeholder="?" autocomplete="off">
+        <button class="primary" id="mathCheck">Check</button>
+      </div>
+      <div class="feedback" id="mathFeedback"></div>
+    </div>
+  </section>
+
+  <!-- GK -->
+  <section id="gk" class="view">
+    <div class="card">
+      <h2>General Knowledge</h2>
+      <div class="stats">
+        <div>Question <b id="gkNum">1</b>/<span id="gkTotal">10</span></div>
+        <div>Score <b id="gkScore">0</b></div>
+        <div>Best <b id="gkBest">0</b></div>
+      </div>
+      <div class="topic-tag" id="gkTopic">General</div>
+      <div class="question" id="gkQuestion">Loading...</div>
+      <div class="options" id="gkOptions"></div>
+      <div class="next-row">
+        <button class="primary" id="gkNext" style="display:none;">Next Question →</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// ---------- Navigation ----------
+const views = document.querySelectorAll('.view');
+const navBtns = document.querySelectorAll('.nav-btn');
+function showView(name) {
+  views.forEach(v => v.classList.toggle('active', v.id === name));
+  navBtns.forEach(b => b.classList.toggle('active', b.dataset.view === name));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (name === 'gk' && !gkStarted) startGK();
+}
+document.querySelectorAll('[data-view]').forEach(el => {
+  el.addEventListener('click', () => showView(el.dataset.view));
+});
+document.getElementById('startBtn').addEventListener('click', () => {
+  document.querySelector('.tiles').scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+
+// ---------- Math Practice ----------
+const mathOpSel = document.getElementById('mathOp');
+const mathLevelSel = document.getElementById('mathLevel');
+const mathProblemEl = document.getElementById('mathProblem');
+const mathInput = document.getElementById('mathInput');
+const mathCheckBtn = document.getElementById('mathCheck');
+const mathFeedback = document.getElementById('mathFeedback');
+const mathScoreEl = document.getElementById('mathScore');
+const mathStreakEl = document.getElementById('mathStreak');
+const mathBestEl = document.getElementById('mathBest');
+
+let mathScore = 0, mathStreak = 0;
+let mathBest = Number(localStorage.getItem('dr_math_best') || 0);
+mathBestEl.textContent = mathBest;
+let currentAnswer = null;
+
+function rand(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+
+// ---------- Confetti & streak toast ----------
+function confettiBurst(x, y) {
+  const emojis = ['🎉', '⭐', '✨', '🎈', '🌟'];
+  for (let i = 0; i < 8; i++) {
+    const piece = document.createElement('span');
+    piece.className = 'confetti-piece';
+    piece.textContent = emojis[rand(0, emojis.length - 1)];
+    piece.style.left = x + 'px';
+    piece.style.top = y + 'px';
+    const dx = rand(-80, 80), dy = rand(-140, -60);
+    piece.style.setProperty('--end', `translate(${dx}px, ${dy}px)`);
+    document.body.appendChild(piece);
+    setTimeout(() => piece.remove(), 950);
+  }
+}
+
+let streakToastTimer = null;
+function showStreakToast(msg) {
+  let toast = document.getElementById('streakToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'streakToast';
+    toast.className = 'streak-toast';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = msg;
+  clearTimeout(streakToastTimer);
+  requestAnimationFrame(() => toast.classList.add('show'));
+  streakToastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+}
+
+function newProblem() {
+  const level = mathLevelSel.value;
+  const ranges = {
+    easy:   { add: [1, 20], mul: [1, 5],  div: [1, 5] },
+    medium: { add: [10, 100], mul: [2, 10], div: [2, 10] },
+    hard:   { add: [50, 500], mul: [5, 15], div: [5, 15] }
+  }[level];
+
+  let op = mathOpSel.value;
+  if (op === 'mixed') op = ['+', '-', '*', '/'][rand(0, 3)];
+
+  let a, b, text, answer;
+  if (op === '+') {
+    a = rand(...ranges.add); b = rand(...ranges.add);
+    text = `${a} + ${b}`; answer = a + b;
+  } else if (op === '-') {
+    a = rand(...ranges.add); b = rand(...ranges.add);
+    if (b > a) [a, b] = [b, a];
+    text = `${a} − ${b}`; answer = a - b;
+  } else if (op === '*') {
+    a = rand(...ranges.mul); b = rand(...ranges.mul);
+    text = `${a} × ${b}`; answer = a * b;
+  } else {
+    b = rand(...ranges.div); const k = rand(...ranges.div);
+    a = b * k;
+    text = `${a} ÷ ${b}`; answer = k;
+  }
+  currentAnswer = answer;
+  mathProblemEl.textContent = text;
+  mathInput.value = '';
+  mathFeedback.textContent = '';
+  mathFeedback.className = 'feedback';
+  mathInput.focus();
+}
+
+function checkAnswer() {
+  if (mathInput.value === '') return;
+  const val = Number(mathInput.value);
+  if (val === currentAnswer) {
+    mathScore++; mathStreak++;
+    if (mathStreak > mathBest) {
+      mathBest = mathStreak;
+      localStorage.setItem('dr_math_best', mathBest);
+    }
+    mathFeedback.textContent = 'Correct! 🎉';
+    mathFeedback.className = 'feedback correct';
+    const rect = mathCheckBtn.getBoundingClientRect();
+    confettiBurst(rect.left + rect.width / 2, rect.top);
+    if ([5, 10, 20, 50].includes(mathStreak)) {
+      showStreakToast(`🔥 ${mathStreak} in a row! Amazing!`);
+    }
+  } else {
+    mathStreak = 0;
+    mathFeedback.textContent = `Not quite — answer was ${currentAnswer}`;
+    mathFeedback.className = 'feedback wrong';
+  }
+  mathScoreEl.textContent = mathScore;
+  mathStreakEl.textContent = mathStreak;
+  mathBestEl.textContent = mathBest;
+  setTimeout(newProblem, 1100);
+}
+
+mathCheckBtn.addEventListener('click', checkAnswer);
+mathInput.addEventListener('keydown', e => { if (e.key === 'Enter') checkAnswer(); });
+mathOpSel.addEventListener('change', newProblem);
+mathLevelSel.addEventListener('change', newProblem);
+newProblem();
+
+// ---------- General Knowledge ----------
+const gkBank = [
+  { topic: 'Geography', q: 'What is the capital of India?', options: ['Mumbai', 'New Delhi', 'Kolkata', 'Chennai'], a: 1 },
+  { topic: 'Geography', q: 'Which is the largest continent by area?', options: ['Africa', 'Asia', 'Europe', 'Australia'], a: 1 },
+  { topic: 'Geography', q: 'Which river is the longest in the world?', options: ['Amazon', 'Ganga', 'Nile', 'Yangtze'], a: 2 },
+  { topic: 'Geography', q: 'Mount Everest is located in which mountain range?', options: ['Alps', 'Andes', 'Himalayas', 'Rockies'], a: 2 },
+  { topic: 'Geography', q: 'Which is the smallest country in the world?', options: ['Monaco', 'Vatican City', 'Malta', 'Nauru'], a: 1 },
+  { topic: 'Science', q: 'How many planets are there in our solar system?', options: ['7', '8', '9', '10'], a: 1 },
+  { topic: 'Science', q: 'Which planet is known as the Red Planet?', options: ['Venus', 'Jupiter', 'Mars', 'Saturn'], a: 2 },
+  { topic: 'Science', q: 'What gas do plants absorb from the air to make food?', options: ['Oxygen', 'Carbon dioxide', 'Nitrogen', 'Hydrogen'], a: 1 },
+  { topic: 'Science', q: 'How many bones are there in an adult human body?', options: ['186', '206', '226', '246'], a: 1 },
+  { topic: 'Science', q: 'What is the chemical symbol for water?', options: ['H2O', 'CO2', 'O2', 'NaCl'], a: 0 },
+  { topic: 'Science', q: 'Which part of the body pumps blood?', options: ['Lungs', 'Brain', 'Heart', 'Liver'], a: 2 },
+  { topic: 'Science', q: 'What do bees make?', options: ['Milk', 'Honey', 'Silk', 'Wax only'], a: 1 },
+  { topic: 'History', q: 'Who was the first Prime Minister of India?', options: ['Mahatma Gandhi', 'Jawaharlal Nehru', 'Sardar Patel', 'Dr. Rajendra Prasad'], a: 1 },
+  { topic: 'History', q: 'In which year did India get independence?', options: ['1945', '1946', '1947', '1950'], a: 2 },
+  { topic: 'History', q: 'Who wrote the Indian National Anthem?', options: ['Rabindranath Tagore', 'Bankim Chandra', 'Sarojini Naidu', 'Subhas Chandra Bose'], a: 0 },
+  { topic: 'General', q: 'How many days are there in a leap year?', options: ['364', '365', '366', '367'], a: 2 },
+  { topic: 'General', q: 'How many colors are there in a rainbow?', options: ['5', '6', '7', '8'], a: 2 },
+  { topic: 'General', q: 'What is the national bird of India?', options: ['Parrot', 'Peacock', 'Sparrow', 'Eagle'], a: 1 },
+  { topic: 'General', q: 'What is the national animal of India?', options: ['Lion', 'Elephant', 'Tiger', 'Deer'], a: 2 },
+  { topic: 'General', q: 'Which shape has three sides?', options: ['Square', 'Triangle', 'Pentagon', 'Circle'], a: 1 },
+  { topic: 'General', q: 'How many months have 31 days?', options: ['5', '6', '7', '8'], a: 2 },
+  { topic: 'Sports', q: 'How many players are there in a cricket team?', options: ['9', '10', '11', '12'], a: 2 },
+  { topic: 'Sports', q: 'In which sport would you perform a "slam dunk"?', options: ['Football', 'Basketball', 'Tennis', 'Hockey'], a: 1 },
+  { topic: 'Sports', q: 'The Olympic Games are held every how many years?', options: ['2', '3', '4', '5'], a: 2 },
+  { topic: 'Nature', q: 'Which is the largest animal on Earth?', options: ['Elephant', 'Blue Whale', 'Giraffe', 'Shark'], a: 1 },
+  { topic: 'Nature', q: 'Which is the fastest land animal?', options: ['Lion', 'Horse', 'Cheetah', 'Leopard'], a: 2 },
+  { topic: 'Nature', q: 'What do caterpillars turn into?', options: ['Bees', 'Butterflies', 'Moths only', 'Beetles'], a: 1 },
+  { topic: 'Nature', q: 'Which bird cannot fly?', options: ['Sparrow', 'Ostrich', 'Eagle', 'Pigeon'], a: 1 },
+  { topic: 'General', q: 'What do we call a baby dog?', options: ['Kitten', 'Cub', 'Puppy', 'Calf'], a: 2 },
+  { topic: 'General', q: 'Which is the closest star to Earth?', options: ['Sirius', 'Proxima Centauri', 'The Sun', 'Polaris'], a: 2 },
+];
+
+const GK_QUIZ_LEN = 10;
+let gkQuestions = [], gkIndex = 0, gkScore = 0, gkStarted = false;
+const gkQuestionEl = document.getElementById('gkQuestion');
+const gkOptionsEl = document.getElementById('gkOptions');
+const gkTopicEl = document.getElementById('gkTopic');
+const gkNumEl = document.getElementById('gkNum');
+const gkTotalEl = document.getElementById('gkTotal');
+const gkScoreEl = document.getElementById('gkScore');
+const gkBestEl = document.getElementById('gkBest');
+const gkNextBtn = document.getElementById('gkNext');
+let gkBest = Number(localStorage.getItem('dr_gk_best') || 0);
+gkBestEl.textContent = gkBest;
+gkTotalEl.textContent = GK_QUIZ_LEN;
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = rand(0, i);
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function startGK() {
+  gkStarted = true;
+  gkQuestions = shuffle(gkBank).slice(0, GK_QUIZ_LEN);
+  gkIndex = 0;
+  gkScore = 0;
+  gkScoreEl.textContent = gkScore;
+  renderGK();
+}
+
+function renderGK() {
+  if (gkIndex >= gkQuestions.length) {
+    gkTopicEl.textContent = 'Done';
+    const pct = gkScore / gkQuestions.length;
+    const starCount = pct >= 0.9 ? 3 : pct >= 0.6 ? 2 : 1;
+    const stars = '⭐'.repeat(starCount) + '☆'.repeat(3 - starCount);
+    gkQuestionEl.innerHTML = `Quiz complete! 🎉<br>You scored <b>${gkScore}/${gkQuestions.length}</b>`;
+    gkOptionsEl.innerHTML = `<div class="star-rating">${stars}</div>`;
+    if (gkScore > gkBest) {
+      gkBest = gkScore;
+      localStorage.setItem('dr_gk_best', gkBest);
+      gkBestEl.textContent = gkBest;
+    }
+    gkNextBtn.textContent = 'Play Again';
+    gkNextBtn.style.display = 'inline-block';
+    gkNextBtn.onclick = startGK;
+    return;
+  }
+  const item = gkQuestions[gkIndex];
+  gkNumEl.textContent = gkIndex + 1;
+  gkTopicEl.textContent = item.topic;
+  gkQuestionEl.textContent = item.q;
+  gkOptionsEl.innerHTML = '';
+  gkNextBtn.style.display = 'none';
+
+  item.options.forEach((optText, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.textContent = optText;
+    btn.addEventListener('click', () => selectGK(i, item));
+    gkOptionsEl.appendChild(btn);
+  });
+}
+
+function selectGK(choice, item) {
+  const btns = gkOptionsEl.querySelectorAll('.opt');
+  btns.forEach((b, i) => {
+    b.disabled = true;
+    if (i === item.a) b.classList.add('correct');
+    else if (i === choice) b.classList.add('wrong');
+  });
+  if (choice === item.a) {
+    gkScore++;
+    const rect = btns[choice].getBoundingClientRect();
+    confettiBurst(rect.left + rect.width / 2, rect.top);
+  }
+  gkScoreEl.textContent = gkScore;
+  gkNextBtn.textContent = 'Next Question →';
+  gkNextBtn.style.display = 'inline-block';
+  gkNextBtn.onclick = () => { gkIndex++; renderGK(); };
+}
+</script>
+</body>
+</html>
