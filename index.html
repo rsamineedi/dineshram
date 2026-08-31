@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dinesh Ram's Learning Corner</title>
+<title>Dinesh Ram's Science Corner</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -22,8 +22,6 @@
     --green: #35d999;
     --red: #ff6b6b;
     --yellow: #ffe066;
-    --sky: #4fb3e0;
-    --pink: #ef6fa0;
     color-scheme: dark;
   }
   * { box-sizing: border-box; }
@@ -63,7 +61,6 @@
     position: absolute; opacity: 0.85; filter: drop-shadow(0 0 18px rgba(53,199,255,0.15));
   }
   .bg-decor .atom { top: -20px; left: -30px; width: 220px; animation: floaty 7s ease-in-out infinite; }
-  .bg-decor .rocket { top: 60px; right: 4%; width: 130px; transform: rotate(18deg); animation: floaty 6s ease-in-out infinite 0.5s; }
   .bg-decor .planet { top: 480px; right: -20px; width: 220px; animation: floaty 8s ease-in-out infinite 1s; }
   .bg-decor .flask { top: 620px; left: -10px; width: 150px; animation: floaty 6.5s ease-in-out infinite 0.3s; }
   .bg-decor .microscope { top: 1000px; right: 2%; width: 170px; animation: floaty 7.5s ease-in-out infinite 0.8s; }
@@ -72,12 +69,17 @@
   @media (max-width: 900px) { .bg-decor { display: none; } }
   header.site, main { position: relative; z-index: 1; }
 
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(8deg); }
+  }
+
   /* Header */
   header.site {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.9rem;
+    gap: 0.7rem;
     padding: 1.75rem 2rem 1.5rem;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     max-width: 1080px;
@@ -98,178 +100,52 @@
     box-shadow: 0 0 30px rgba(53,199,255,0.4);
   }
   .brand .word { font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 1.15rem; }
-  nav.site { display: flex; gap: 1.6rem; }
-  nav.site a {
-    font-size: 0.92rem; font-weight: 500; color: var(--muted);
-    text-decoration: none; cursor: pointer; padding-bottom: 4px;
-    border-bottom: 2px solid transparent;
+  .replay-btn {
+    border: none; background: none; color: var(--muted); font-size: 0.85rem;
+    cursor: pointer; text-decoration: underline; font-family: inherit;
   }
-  nav.site a.active, nav.site a:hover { color: var(--ink); border-color: var(--teal); }
+  .replay-btn:hover { color: var(--teal); }
 
-  main { max-width: 1080px; margin: 0 auto; padding: 0 2rem 4rem; }
-  @media (max-width: 720px) { main { padding: 0 1.25rem 3rem; } header.site { padding: 1.1rem 1.25rem; } }
+  main { max-width: 700px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+  @media (max-width: 720px) { main { padding: 1.75rem 1.25rem 3rem; } header.site { padding: 1.1rem 1.25rem; } }
 
-  .view { display: none; }
-  .view.active { display: block; animation: fadeIn 0.25s ease; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-
-  /* Hero */
-  .hero-wrap { position: relative; padding-top: 3rem; }
   .eyebrow {
     text-align: center; text-transform: uppercase; letter-spacing: 0.12em;
     font-size: 0.78rem; font-weight: 600; color: var(--teal);
   }
-  .hero-title {
-    text-align: center; font-size: clamp(2rem, 5.5vw, 3.2rem); line-height: 1.2;
-    margin: 0.7rem auto 0; max-width: 42rem; position: relative; z-index: 1;
+  .page-title {
+    text-align: center; font-size: clamp(1.8rem, 5.5vw, 2.6rem); line-height: 1.2;
+    margin: 0.6rem auto 0;
   }
-  .hero-sub {
-    text-align: center; color: var(--muted); font-size: 1.08rem;
-    max-width: 34rem; margin: 1.1rem auto 0;
+  .page-sub {
+    text-align: center; color: var(--muted); font-size: 1.02rem;
+    max-width: 32rem; margin: 0.9rem auto 0;
   }
+
   .doodle {
-    position: absolute; width: 28px; opacity: 0.9;
+    position: absolute; width: 24px; opacity: 0.9;
     animation: floaty 4s ease-in-out infinite;
     pointer-events: none; user-select: none;
   }
-  .doodle.d1 { top: -10px; left: 8%; animation-delay: 0s; }
-  .doodle.d2 { top: 10px; right: 10%; width: 22px; animation-delay: 0.6s; }
-  .doodle.d3 { bottom: -10px; left: 20%; width: 20px; animation-delay: 1.2s; }
-  .doodle.d4 { bottom: 0; right: 20%; width: 26px; animation-delay: 1.8s; }
+  .doodle.d1 { top: -6px; left: 6%; }
+  .doodle.d2 { top: 8px; right: 8%; width: 18px; animation-delay: 0.6s; }
+  .doodle.d3 { bottom: -10px; left: 22%; width: 16px; animation-delay: 1.2s; }
   @media (max-width: 640px) { .doodle { display: none; } }
-  @keyframes floaty {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(8deg); }
-  }
 
-  /* Steps */
-  .step { display: flex; align-items: center; gap: 3rem; margin-top: 5rem; }
-  .step.reverse { flex-direction: row-reverse; }
-  .step-text, .step-mock { flex: 1; min-width: 0; }
-  @media (max-width: 800px) {
-    .step, .step.reverse { flex-direction: column; gap: 1.75rem; margin-top: 3.5rem; }
-  }
-  .step-badge {
-    display: inline-block; font-size: 0.85rem; font-weight: 600;
-    background: var(--teal-tint); color: var(--teal-dark);
-    padding: 0.3rem 0.85rem; border-radius: 999px; margin-bottom: 0.9rem;
-  }
-  .step-text h2 { font-size: clamp(1.5rem, 3.4vw, 2.1rem); line-height: 1.2; }
-  .step-text p { color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0.9rem 0 1rem; }
-  .checklist { list-style: none; padding: 0; margin: 0; }
-  .checklist li { color: var(--ink); font-size: 0.95rem; margin-bottom: 0.5rem; }
-  .checklist li::before { content: "✓ "; color: var(--teal); font-weight: 700; }
-
-  /* Browser mockup */
-  .mockup {
-    background: var(--panel);
-    border-radius: 16px;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.55);
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.08);
-  }
-  .mockup-bar {
-    display: flex; align-items: center; gap: 0.4rem;
-    background: var(--cream-deep); padding: 0.6rem 0.9rem;
-  }
-  .mockup-bar .dot { width: 9px; height: 9px; border-radius: 50%; }
-  .mockup-bar .dot.r { background: #e58a7a; }
-  .mockup-bar .dot.y { background: #e8c07a; }
-  .mockup-bar .dot.g { background: #8fbf8f; }
-  .mockup-bar .url {
-    flex: 1; text-align: center; font-size: 0.72rem; color: var(--muted);
-  }
-  .mockup-body { padding: 1.4rem; }
-
-  .mock-tiles { display: flex; gap: 0.8rem; }
-  .mock-tile {
-    flex: 1; border-radius: 12px; padding: 1.4rem 0.8rem; text-align: center;
-    font-size: 0.95rem; font-weight: 700; color: #fff;
-  }
-  .mock-tile.a { background: var(--teal); }
-  .mock-tile.b { background: var(--orange); }
-
-  .mock-problem { text-align: center; }
-  .mock-problem .expr { font-family: "Fredoka", sans-serif; font-size: 1.8rem; margin-bottom: 0.8rem; }
-  .mock-answer {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: var(--cream); border-radius: 10px; padding: 0.5rem 0.9rem;
-    font-size: 1rem; font-weight: 600;
-  }
-  .mock-check { color: var(--green); font-weight: 700; margin-top: 0.7rem; font-size: 0.9rem; }
-
-  .mock-stats { display: flex; gap: 0.7rem; }
-  .mock-stat { flex: 1; background: var(--cream); border-radius: 10px; padding: 0.8rem; text-align: center; }
-  .mock-stat.hi { background: var(--teal-tint); }
-  .mock-stat .num { font-family: "Fredoka", sans-serif; font-size: 1.3rem; color: var(--teal-dark); }
-  .mock-stat .lbl { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
-
-  /* CTA band */
-  .cta-band {
-    background: var(--panel-2); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; color: var(--ink);
-    padding: 2.4rem 2.2rem; margin-top: 4.5rem;
-    display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
-    box-shadow: 0 0 40px rgba(53,199,255,0.08);
-  }
-  .cta-band h2 { font-size: clamp(1.5rem, 3.6vw, 2rem); color: var(--ink); }
-  .cta-band p { margin: 0.5rem 0 0; color: var(--muted); }
-  .cta-band button {
-    border: none; background: var(--teal); color: #06182f;
-    padding: 0.85rem 1.6rem; border-radius: 999px; font-weight: 700;
-    font-size: 1rem; cursor: pointer; white-space: nowrap;
-    transition: transform 0.15s ease;
-  }
-  .cta-band button:hover { transform: scale(1.06) rotate(-1deg); }
-  .cta-band button:active { transform: scale(0.95); }
-
-  /* Tiles (launch) */
-  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; }
-  @media (max-width: 520px) { .tiles { grid-template-columns: 1fr; } }
-  .tile {
-    border-radius: 18px; padding: 2rem 1.2rem; text-align: center;
-    color: #fff; cursor: pointer; border: none; font-size: 1.4rem; font-weight: 700;
-    font-family: "Fredoka", sans-serif;
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
-  }
-  .tile:hover { transform: translateY(-4px) rotate(-1deg) scale(1.03); box-shadow: 0 12px 28px rgba(0,0,0,0.5); }
-  .tile:active { transform: scale(0.96); }
-  .tile.math { background: var(--teal); }
-  .tile.gk { background: var(--orange); }
-
-  /* App cards (Math / GK) */
+  /* App card */
   .card {
     background: var(--panel);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 20px;
     padding: 1.9rem;
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    margin: 2.5rem auto 0;
-    max-width: 640px;
-  }
-  .card h2 { text-align: center; font-size: 1.6rem; margin-bottom: 1.3rem; }
-
-  .controls { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.4rem; justify-content: center; }
-  select {
-    padding: 0.5rem 0.8rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2);
-    background: var(--panel-2); font-size: 0.95rem; color: var(--ink); font-family: inherit;
+    margin: 2rem auto 0;
+    max-width: 560px;
   }
 
   .stats { display: flex; justify-content: center; gap: 1.7rem; margin-bottom: 1.1rem; font-size: 0.92rem; color: var(--muted); }
   .stats b { color: var(--teal-dark); font-size: 1.15rem; font-family: "Fredoka", sans-serif; }
 
-  .problem {
-    text-align: center; font-family: "Fredoka", sans-serif;
-    font-size: clamp(2rem, 8vw, 2.7rem); font-weight: 600;
-    margin: 1rem 0 1.6rem; color: var(--teal-dark);
-  }
-  .answer-row { display: flex; gap: 0.6rem; justify-content: center; }
-  .answer-row input {
-    width: 8rem; font-size: 1.4rem; text-align: center; padding: 0.6rem;
-    border-radius: 12px; border: 2px solid rgba(255,255,255,0.2); font-family: inherit;
-    background: var(--panel-2); color: var(--ink);
-  }
-  .answer-row input:focus { outline: none; border-color: var(--teal); }
   button.primary {
     border: none; padding: 0.7rem 1.4rem; border-radius: 999px;
     font-size: 1.05rem; font-weight: 700; color: #fff; background: var(--teal); cursor: pointer;
@@ -277,9 +153,6 @@
   }
   button.primary:hover { background: #1c86b8; transform: scale(1.05); }
   button.primary:active { transform: scale(0.95); }
-  .feedback { text-align: center; margin-top: 1rem; font-size: 1.05rem; font-weight: 600; min-height: 1.6rem; }
-  .feedback.correct { color: var(--green); }
-  .feedback.wrong { color: var(--red); }
 
   .question { font-size: 1.2rem; font-weight: 600; margin-bottom: 1.25rem; text-align: center; }
   .options { display: grid; gap: 0.7rem; }
@@ -302,15 +175,6 @@
     padding: 0.2rem 0.7rem; border-radius: 999px; margin-bottom: 0.9rem;
   }
   .star-rating { text-align: center; font-size: 2rem; margin: 0.6rem 0; letter-spacing: 0.2rem; }
-  .streak-toast {
-    position: fixed; left: 50%; bottom: 2rem; transform: translateX(-50%) translateY(20px);
-    background: var(--panel-2); color: var(--ink); font-family: "Fredoka", sans-serif;
-    font-weight: 600; padding: 0.7rem 1.3rem; border-radius: 999px;
-    border: 1px solid rgba(53,199,255,0.3);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.4); opacity: 0; transition: all 0.3s ease; z-index: 10;
-    pointer-events: none;
-  }
-  .streak-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   .confetti-piece {
     position: fixed; top: 40%; font-size: 1.4rem; pointer-events: none; z-index: 20;
     animation: confetti-burst 0.9s ease-out forwards;
@@ -320,47 +184,57 @@
     100% { transform: var(--end, translate(0, -120px)) rotate(360deg) scale(1); opacity: 0; }
   }
 
-  /* Entry gate */
-  .gate {
+  /* Entry mission (game) */
+  .mission {
     position: fixed; inset: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: center; padding: 1.5rem;
-    background-color: var(--cream);
-    background-image: radial-gradient(900px 500px at 50% 0%, rgba(53,199,255,0.14), transparent 60%);
-    transition: opacity 0.4s ease, visibility 0.4s ease;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 2rem 1.5rem; text-align: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
   }
-  .gate.unlocked { opacity: 0; visibility: hidden; pointer-events: none; }
-  .gate-card {
-    background: var(--panel); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
-    padding: 2rem; max-width: 420px; width: 100%; text-align: center;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+  .mission.unlocked { opacity: 0; visibility: hidden; pointer-events: none; }
+  .mission-hero { position: relative; margin-bottom: 0.5rem; }
+  .mission-rocket { width: 100px; animation: floaty 3s ease-in-out infinite; }
+  .mission-rocket.launch { animation: launch 1s ease-in forwards; }
+  @keyframes launch {
+    to { transform: translateY(-140vh) rotate(-10deg); opacity: 0; }
   }
-  .gate-badge {
-    display: inline-block; background: var(--teal-tint); color: var(--teal-dark);
-    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;
-    padding: 0.3rem 0.8rem; border-radius: 999px; margin-bottom: 0.9rem; font-weight: 600;
+  .mission-progress { display: flex; gap: 0.6rem; justify-content: center; margin: 1.1rem 0 0.4rem; }
+  .mission-dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.25); transition: all 0.3s ease;
   }
-  .gate-card h2 { font-size: 1.4rem; margin-bottom: 0.9rem; }
-  .gate-q { font-size: 1.05rem; font-weight: 600; margin: 0 0 1.2rem; }
-  .gate-msg { min-height: 1.4rem; margin-top: 1rem; font-weight: 600; }
-  .gate-msg.wrong { color: var(--red); }
-  .gate-msg.correct { color: var(--green); }
+  .mission-dot.current { border-color: var(--teal); }
+  .mission-dot.done { background: var(--teal); border-color: var(--teal); box-shadow: 0 0 10px rgba(53,199,255,0.6); }
+  .mission-msg { min-height: 1.4rem; margin-top: 1rem; font-weight: 600; }
+  .mission-msg.wrong { color: var(--red); }
+  .mission-msg.correct { color: var(--green); }
 </style>
 </head>
 <body>
 
-<div id="entryGate" class="gate">
-  <div class="gate-card">
-    <span class="gate-badge">🔬 Science Check</span>
-    <h2>Answer this to enter!</h2>
-    <p class="gate-q" id="gateQ">Loading...</p>
-    <div class="options" id="gateOptions"></div>
-    <p class="gate-msg" id="gateMsg"></p>
+<div id="entryMission" class="mission">
+  <div class="mission-hero">
+    <img class="doodle d1" src="assets/star.svg" alt="">
+    <img class="doodle d2" src="assets/star.svg" alt="">
+    <img id="missionRocket" class="mission-rocket" src="assets/rocket.svg" alt="">
+  </div>
+  <div class="eyebrow">Mission Control</div>
+  <h1 class="page-title">Science <em>Challenge</em></h1>
+  <p class="page-sub">Answer 3 questions correctly to launch into the Science Zone!</p>
+  <div class="mission-progress">
+    <span class="mission-dot" id="mDot0"></span>
+    <span class="mission-dot" id="mDot1"></span>
+    <span class="mission-dot" id="mDot2"></span>
+  </div>
+  <div class="card">
+    <div class="question" id="missionQ">Loading...</div>
+    <div class="options" id="missionOptions"></div>
+    <p class="mission-msg" id="missionMsg"></p>
   </div>
 </div>
 
 <div class="bg-decor">
   <img class="atom" src="assets/atom.svg" alt="">
-  <img class="rocket" src="assets/rocket.svg" alt="">
   <img class="planet" src="assets/planet.svg" alt="">
   <img class="flask" src="assets/flask.svg" alt="">
   <img class="microscope" src="assets/microscope.svg" alt="">
@@ -370,255 +244,39 @@
 
 <header class="site">
   <div class="brand">
-    <span class="word">Dinesh Ram's Corner</span>
+    <span class="word">Dinesh Ram's Science Corner</span>
     <span class="avatar-ring">
       <img class="mark" src="dinesh-avatar.png" alt="Dinesh Ram">
     </span>
   </div>
-  <nav class="site">
-    <a class="nav-btn active" data-view="home">How it works</a>
-    <a class="nav-btn" data-view="math">Math</a>
-    <a class="nav-btn" data-view="gk">General Knowledge</a>
-  </nav>
+  <button id="replayBtn" class="replay-btn">🔁 Replay Mission Challenge</button>
 </header>
 
 <main>
+  <div class="eyebrow">Science Zone</div>
+  <h1 class="page-title">Science Questions</h1>
+  <p class="page-sub">Explore fun facts about space, the human body, chemistry and more!</p>
 
-  <!-- HOME -->
-  <section id="home" class="view active">
-    <div class="hero-wrap">
-      <img class="doodle d1" src="assets/star.svg" alt="">
-      <img class="doodle d2" src="assets/small_atom.svg" alt="">
-      <img class="doodle d3" src="assets/star.svg" alt="">
-      <img class="doodle d4" src="assets/star.svg" alt="">
-      <div class="eyebrow">Learning Corner</div>
-      <h1 class="hero-title">Learn, play, and <em>grow</em> — one step at a time.</h1>
-      <p class="hero-sub">Two fun activities. No sign-in needed. Everything happens right here in your browser.</p>
+  <div class="card">
+    <div class="stats">
+      <div>Question <b id="qNum">1</b>/<span id="qTotal">10</span></div>
+      <div>Score <b id="qScore">0</b></div>
+      <div>Best <b id="qBest">0</b></div>
     </div>
-
-    <div class="step">
-      <div class="step-text">
-        <span class="step-badge">Step 01</span>
-        <h2>Pick an activity</h2>
-        <p>Choose Math Practice to sharpen your number skills, or General Knowledge to explore fun facts about the world.</p>
-        <ul class="checklist">
-          <li>Math practice with 4 operations</li>
-          <li>General Knowledge quiz</li>
-          <li>New questions every time you play</li>
-        </ul>
-      </div>
-      <div class="step-mock">
-        <div class="mockup">
-          <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url">dineshram.in</span></div>
-          <div class="mockup-body">
-            <div class="mock-tiles">
-              <div class="mock-tile a">Math</div>
-              <div class="mock-tile b">GK</div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="topic-tag" id="qTopic">Science</div>
+    <div class="question" id="qQuestion">Loading...</div>
+    <div class="options" id="qOptions"></div>
+    <div class="next-row">
+      <button class="primary" id="qNext" style="display:none;">Next Question →</button>
     </div>
-
-    <div class="step reverse">
-      <div class="step-text">
-        <span class="step-badge">Step 02</span>
-        <h2>Answer &amp; get instant feedback</h2>
-        <p>Solve the problem or pick an answer. You'll know right away if you got it right — and if not, you'll see the correct answer so you can learn from it.</p>
-        <ul class="checklist">
-          <li>Instant right / wrong feedback</li>
-          <li>Correct answer shown when you miss one</li>
-          <li>No pressure — go at your own pace</li>
-        </ul>
-      </div>
-      <div class="step-mock">
-        <div class="mockup">
-          <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url">dineshram.in</span></div>
-          <div class="mockup-body mock-problem">
-            <div class="expr">7 × 8 = ?</div>
-            <span class="mock-answer">56</span>
-            <div class="mock-check">✓ Correct! 🎉</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="step-text">
-        <span class="step-badge">Step 03</span>
-        <h2>Track your score</h2>
-        <p>Watch your score and streak grow as you play. Your best score is saved automatically, so you can come back anytime and try to beat it.</p>
-        <ul class="checklist">
-          <li>Score &amp; streak counter</li>
-          <li>Best score saved automatically</li>
-          <li>Come back anytime to beat your record</li>
-        </ul>
-      </div>
-      <div class="step-mock">
-        <div class="mockup">
-          <div class="mockup-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url">dineshram.in</span></div>
-          <div class="mockup-body">
-            <div class="mock-stats">
-              <div class="mock-stat"><div class="num">12</div><div class="lbl">Score</div></div>
-              <div class="mock-stat hi"><div class="num">9</div><div class="lbl">Streak</div></div>
-              <div class="mock-stat"><div class="num">15</div><div class="lbl">Best</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cta-band">
-      <div>
-        <h2>Ready to play and learn?</h2>
-        <p>Takes 10 seconds. No sign-in. Just for fun.</p>
-      </div>
-      <button id="startBtn">Start Learning →</button>
-    </div>
-
-    <div class="tiles">
-      <button class="tile math" data-view="math">Math</button>
-      <button class="tile gk" data-view="gk">GK</button>
-    </div>
-  </section>
-
-  <!-- MATH -->
-  <section id="math" class="view">
-    <div class="card">
-      <h2>Math Practice</h2>
-      <div class="controls">
-        <select id="mathOp">
-          <option value="mixed">Mixed</option>
-          <option value="+">Addition (+)</option>
-          <option value="-">Subtraction (−)</option>
-          <option value="*">Multiplication (×)</option>
-          <option value="/">Division (÷)</option>
-        </select>
-        <select id="mathLevel">
-          <option value="easy">Easy</option>
-          <option value="medium" selected>Medium</option>
-          <option value="hard">Hard</option>
-        </select>
-      </div>
-      <div class="stats">
-        <div>Score <b id="mathScore">0</b></div>
-        <div>Streak <b id="mathStreak">0</b></div>
-        <div>Best <b id="mathBest">0</b></div>
-      </div>
-      <div class="problem" id="mathProblem">— </div>
-      <div class="answer-row">
-        <input type="number" id="mathInput" placeholder="?" autocomplete="off">
-        <button class="primary" id="mathCheck">Check</button>
-      </div>
-      <div class="feedback" id="mathFeedback"></div>
-    </div>
-  </section>
-
-  <!-- GK -->
-  <section id="gk" class="view">
-    <div class="card">
-      <h2>General Knowledge</h2>
-      <div class="stats">
-        <div>Question <b id="gkNum">1</b>/<span id="gkTotal">10</span></div>
-        <div>Score <b id="gkScore">0</b></div>
-        <div>Best <b id="gkBest">0</b></div>
-      </div>
-      <div class="topic-tag" id="gkTopic">General</div>
-      <div class="question" id="gkQuestion">Loading...</div>
-      <div class="options" id="gkOptions"></div>
-      <div class="next-row">
-        <button class="primary" id="gkNext" style="display:none;">Next Question →</button>
-      </div>
-    </div>
-  </section>
-
+  </div>
 </main>
 
 <script>
-// ---------- Entry gate ----------
-const scienceGate = [
-  { q: 'Which planet is known as the Red Planet?', options: ['Venus', 'Mars', 'Jupiter', 'Saturn'], a: 1 },
-  { q: 'What gas do humans breathe in to survive?', options: ['Carbon dioxide', 'Nitrogen', 'Oxygen', 'Helium'], a: 2 },
-  { q: 'How many legs does a spider have?', options: ['6', '8', '10', '4'], a: 1 },
-  { q: 'What is the closest star to Earth?', options: ['Proxima Centauri', 'Polaris', 'Sirius', 'The Sun'], a: 3 },
-  { q: 'What state of matter is ice?', options: ['Gas', 'Liquid', 'Solid', 'Plasma'], a: 2 },
-  { q: 'Which planet is famous for its rings?', options: ['Saturn', 'Mercury', 'Earth', 'Mars'], a: 0 },
-  { q: 'What do we call animals that only eat plants?', options: ['Carnivores', 'Omnivores', 'Herbivores', 'Predators'], a: 2 },
-  { q: 'How many bones does an adult human body have?', options: ['126', '160', '206', '260'], a: 2 },
-];
-
-function initGate() {
-  const item = scienceGate[Math.floor(Math.random() * scienceGate.length)];
-  document.getElementById('gateQ').textContent = item.q;
-  const optsEl = document.getElementById('gateOptions');
-  const msgEl = document.getElementById('gateMsg');
-  optsEl.innerHTML = '';
-  item.options.forEach((optText, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'opt';
-    btn.textContent = optText;
-    btn.addEventListener('click', () => {
-      if (i === item.a) {
-        btn.classList.add('correct');
-        optsEl.querySelectorAll('.opt').forEach(b => b.disabled = true);
-        msgEl.textContent = 'Correct! Welcome in 🚀';
-        msgEl.className = 'gate-msg correct';
-        const rect = btn.getBoundingClientRect();
-        confettiBurst(rect.left + rect.width / 2, rect.top);
-        setTimeout(() => {
-          document.getElementById('entryGate').classList.add('unlocked');
-          document.body.style.overflow = '';
-        }, 700);
-      } else {
-        btn.classList.add('wrong');
-        btn.disabled = true;
-        msgEl.textContent = 'Not quite — try another answer!';
-        msgEl.className = 'gate-msg wrong';
-      }
-    });
-    optsEl.appendChild(btn);
-  });
-}
-document.body.style.overflow = 'hidden';
-initGate();
-
-// ---------- Navigation ----------
-const views = document.querySelectorAll('.view');
-const navBtns = document.querySelectorAll('.nav-btn');
-function showView(name) {
-  views.forEach(v => v.classList.toggle('active', v.id === name));
-  navBtns.forEach(b => b.classList.toggle('active', b.dataset.view === name));
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  if (name === 'gk' && !gkStarted) startGK();
-}
-document.querySelectorAll('[data-view]').forEach(el => {
-  el.addEventListener('click', () => showView(el.dataset.view));
-});
-document.getElementById('startBtn').addEventListener('click', () => {
-  document.querySelector('.tiles').scrollIntoView({ behavior: 'smooth', block: 'center' });
-});
-
-// ---------- Math Practice ----------
-const mathOpSel = document.getElementById('mathOp');
-const mathLevelSel = document.getElementById('mathLevel');
-const mathProblemEl = document.getElementById('mathProblem');
-const mathInput = document.getElementById('mathInput');
-const mathCheckBtn = document.getElementById('mathCheck');
-const mathFeedback = document.getElementById('mathFeedback');
-const mathScoreEl = document.getElementById('mathScore');
-const mathStreakEl = document.getElementById('mathStreak');
-const mathBestEl = document.getElementById('mathBest');
-
-let mathScore = 0, mathStreak = 0;
-let mathBest = Number(localStorage.getItem('dr_math_best') || 0);
-mathBestEl.textContent = mathBest;
-let currentAnswer = null;
-
 function rand(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 
-// ---------- Confetti & streak toast ----------
 function confettiBurst(x, y) {
-  const emojis = ['🎉', '⭐', '✨', '🎈', '🌟'];
+  const emojis = ['🎉', '⭐', '✨', '🚀', '🌟'];
   for (let i = 0; i < 8; i++) {
     const piece = document.createElement('span');
     piece.className = 'confetti-piece';
@@ -632,137 +290,6 @@ function confettiBurst(x, y) {
   }
 }
 
-let streakToastTimer = null;
-function showStreakToast(msg) {
-  let toast = document.getElementById('streakToast');
-  if (!toast) {
-    toast = document.createElement('div');
-    toast.id = 'streakToast';
-    toast.className = 'streak-toast';
-    document.body.appendChild(toast);
-  }
-  toast.textContent = msg;
-  clearTimeout(streakToastTimer);
-  requestAnimationFrame(() => toast.classList.add('show'));
-  streakToastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
-}
-
-function newProblem() {
-  const level = mathLevelSel.value;
-  const ranges = {
-    easy:   { add: [1, 20], mul: [1, 5],  div: [1, 5] },
-    medium: { add: [10, 100], mul: [2, 10], div: [2, 10] },
-    hard:   { add: [50, 500], mul: [5, 15], div: [5, 15] }
-  }[level];
-
-  let op = mathOpSel.value;
-  if (op === 'mixed') op = ['+', '-', '*', '/'][rand(0, 3)];
-
-  let a, b, text, answer;
-  if (op === '+') {
-    a = rand(...ranges.add); b = rand(...ranges.add);
-    text = `${a} + ${b}`; answer = a + b;
-  } else if (op === '-') {
-    a = rand(...ranges.add); b = rand(...ranges.add);
-    if (b > a) [a, b] = [b, a];
-    text = `${a} − ${b}`; answer = a - b;
-  } else if (op === '*') {
-    a = rand(...ranges.mul); b = rand(...ranges.mul);
-    text = `${a} × ${b}`; answer = a * b;
-  } else {
-    b = rand(...ranges.div); const k = rand(...ranges.div);
-    a = b * k;
-    text = `${a} ÷ ${b}`; answer = k;
-  }
-  currentAnswer = answer;
-  mathProblemEl.textContent = text;
-  mathInput.value = '';
-  mathFeedback.textContent = '';
-  mathFeedback.className = 'feedback';
-  mathInput.focus();
-}
-
-function checkAnswer() {
-  if (mathInput.value === '') return;
-  const val = Number(mathInput.value);
-  if (val === currentAnswer) {
-    mathScore++; mathStreak++;
-    if (mathStreak > mathBest) {
-      mathBest = mathStreak;
-      localStorage.setItem('dr_math_best', mathBest);
-    }
-    mathFeedback.textContent = 'Correct! 🎉';
-    mathFeedback.className = 'feedback correct';
-    const rect = mathCheckBtn.getBoundingClientRect();
-    confettiBurst(rect.left + rect.width / 2, rect.top);
-    if ([5, 10, 20, 50].includes(mathStreak)) {
-      showStreakToast(`🔥 ${mathStreak} in a row! Amazing!`);
-    }
-  } else {
-    mathStreak = 0;
-    mathFeedback.textContent = `Not quite — answer was ${currentAnswer}`;
-    mathFeedback.className = 'feedback wrong';
-  }
-  mathScoreEl.textContent = mathScore;
-  mathStreakEl.textContent = mathStreak;
-  mathBestEl.textContent = mathBest;
-  setTimeout(newProblem, 1100);
-}
-
-mathCheckBtn.addEventListener('click', checkAnswer);
-mathInput.addEventListener('keydown', e => { if (e.key === 'Enter') checkAnswer(); });
-mathOpSel.addEventListener('change', newProblem);
-mathLevelSel.addEventListener('change', newProblem);
-newProblem();
-
-// ---------- General Knowledge ----------
-const gkBank = [
-  { topic: 'Geography', q: 'What is the capital of India?', options: ['Mumbai', 'New Delhi', 'Kolkata', 'Chennai'], a: 1 },
-  { topic: 'Geography', q: 'Which is the largest continent by area?', options: ['Africa', 'Asia', 'Europe', 'Australia'], a: 1 },
-  { topic: 'Geography', q: 'Which river is the longest in the world?', options: ['Amazon', 'Ganga', 'Nile', 'Yangtze'], a: 2 },
-  { topic: 'Geography', q: 'Mount Everest is located in which mountain range?', options: ['Alps', 'Andes', 'Himalayas', 'Rockies'], a: 2 },
-  { topic: 'Geography', q: 'Which is the smallest country in the world?', options: ['Monaco', 'Vatican City', 'Malta', 'Nauru'], a: 1 },
-  { topic: 'Science', q: 'How many planets are there in our solar system?', options: ['7', '8', '9', '10'], a: 1 },
-  { topic: 'Science', q: 'Which planet is known as the Red Planet?', options: ['Venus', 'Jupiter', 'Mars', 'Saturn'], a: 2 },
-  { topic: 'Science', q: 'What gas do plants absorb from the air to make food?', options: ['Oxygen', 'Carbon dioxide', 'Nitrogen', 'Hydrogen'], a: 1 },
-  { topic: 'Science', q: 'How many bones are there in an adult human body?', options: ['186', '206', '226', '246'], a: 1 },
-  { topic: 'Science', q: 'What is the chemical symbol for water?', options: ['H2O', 'CO2', 'O2', 'NaCl'], a: 0 },
-  { topic: 'Science', q: 'Which part of the body pumps blood?', options: ['Lungs', 'Brain', 'Heart', 'Liver'], a: 2 },
-  { topic: 'Science', q: 'What do bees make?', options: ['Milk', 'Honey', 'Silk', 'Wax only'], a: 1 },
-  { topic: 'History', q: 'Who was the first Prime Minister of India?', options: ['Mahatma Gandhi', 'Jawaharlal Nehru', 'Sardar Patel', 'Dr. Rajendra Prasad'], a: 1 },
-  { topic: 'History', q: 'In which year did India get independence?', options: ['1945', '1946', '1947', '1950'], a: 2 },
-  { topic: 'History', q: 'Who wrote the Indian National Anthem?', options: ['Rabindranath Tagore', 'Bankim Chandra', 'Sarojini Naidu', 'Subhas Chandra Bose'], a: 0 },
-  { topic: 'General', q: 'How many days are there in a leap year?', options: ['364', '365', '366', '367'], a: 2 },
-  { topic: 'General', q: 'How many colors are there in a rainbow?', options: ['5', '6', '7', '8'], a: 2 },
-  { topic: 'General', q: 'What is the national bird of India?', options: ['Parrot', 'Peacock', 'Sparrow', 'Eagle'], a: 1 },
-  { topic: 'General', q: 'What is the national animal of India?', options: ['Lion', 'Elephant', 'Tiger', 'Deer'], a: 2 },
-  { topic: 'General', q: 'Which shape has three sides?', options: ['Square', 'Triangle', 'Pentagon', 'Circle'], a: 1 },
-  { topic: 'General', q: 'How many months have 31 days?', options: ['5', '6', '7', '8'], a: 2 },
-  { topic: 'Sports', q: 'How many players are there in a cricket team?', options: ['9', '10', '11', '12'], a: 2 },
-  { topic: 'Sports', q: 'In which sport would you perform a "slam dunk"?', options: ['Football', 'Basketball', 'Tennis', 'Hockey'], a: 1 },
-  { topic: 'Sports', q: 'The Olympic Games are held every how many years?', options: ['2', '3', '4', '5'], a: 2 },
-  { topic: 'Nature', q: 'Which is the largest animal on Earth?', options: ['Elephant', 'Blue Whale', 'Giraffe', 'Shark'], a: 1 },
-  { topic: 'Nature', q: 'Which is the fastest land animal?', options: ['Lion', 'Horse', 'Cheetah', 'Leopard'], a: 2 },
-  { topic: 'Nature', q: 'What do caterpillars turn into?', options: ['Bees', 'Butterflies', 'Moths only', 'Beetles'], a: 1 },
-  { topic: 'Nature', q: 'Which bird cannot fly?', options: ['Sparrow', 'Ostrich', 'Eagle', 'Pigeon'], a: 1 },
-  { topic: 'General', q: 'What do we call a baby dog?', options: ['Kitten', 'Cub', 'Puppy', 'Calf'], a: 2 },
-  { topic: 'General', q: 'Which is the closest star to Earth?', options: ['Sirius', 'Proxima Centauri', 'The Sun', 'Polaris'], a: 2 },
-];
-
-const GK_QUIZ_LEN = 10;
-let gkQuestions = [], gkIndex = 0, gkScore = 0, gkStarted = false;
-const gkQuestionEl = document.getElementById('gkQuestion');
-const gkOptionsEl = document.getElementById('gkOptions');
-const gkTopicEl = document.getElementById('gkTopic');
-const gkNumEl = document.getElementById('gkNum');
-const gkTotalEl = document.getElementById('gkTotal');
-const gkScoreEl = document.getElementById('gkScore');
-const gkBestEl = document.getElementById('gkBest');
-const gkNextBtn = document.getElementById('gkNext');
-let gkBest = Number(localStorage.getItem('dr_gk_best') || 0);
-gkBestEl.textContent = gkBest;
-gkTotalEl.textContent = GK_QUIZ_LEN;
-
 function shuffle(arr) {
   const a = arr.slice();
   for (let i = a.length - 1; i > 0; i--) {
@@ -772,65 +299,186 @@ function shuffle(arr) {
   return a;
 }
 
-function startGK() {
-  gkStarted = true;
-  gkQuestions = shuffle(gkBank).slice(0, GK_QUIZ_LEN);
-  gkIndex = 0;
-  gkScore = 0;
-  gkScoreEl.textContent = gkScore;
-  renderGK();
+// ---------- Entry mission (3-question game) ----------
+const missionBank = [
+  { q: 'Which planet is known as the Red Planet?', options: ['Venus', 'Mars', 'Jupiter', 'Saturn'], a: 1 },
+  { q: 'What gas do humans breathe in to survive?', options: ['Carbon dioxide', 'Nitrogen', 'Oxygen', 'Helium'], a: 2 },
+  { q: 'How many legs does a spider have?', options: ['6', '8', '10', '4'], a: 1 },
+  { q: 'What is the closest star to Earth?', options: ['Proxima Centauri', 'Polaris', 'Sirius', 'The Sun'], a: 3 },
+  { q: 'What state of matter is ice?', options: ['Gas', 'Liquid', 'Solid', 'Plasma'], a: 2 },
+  { q: 'Which planet is famous for its rings?', options: ['Saturn', 'Mercury', 'Earth', 'Mars'], a: 0 },
+  { q: 'What do we call animals that only eat plants?', options: ['Carnivores', 'Omnivores', 'Herbivores', 'Predators'], a: 2 },
+  { q: 'How many bones does an adult human body have?', options: ['126', '160', '206', '260'], a: 2 },
+];
+
+const MISSION_LEN = 3;
+let missionQuestions = [];
+let missionIndex = 0;
+const missionQEl = document.getElementById('missionQ');
+const missionOptsEl = document.getElementById('missionOptions');
+const missionMsgEl = document.getElementById('missionMsg');
+const missionDots = [document.getElementById('mDot0'), document.getElementById('mDot1'), document.getElementById('mDot2')];
+
+function startMission() {
+  missionQuestions = shuffle(missionBank).slice(0, MISSION_LEN);
+  missionIndex = 0;
+  document.getElementById('missionRocket').classList.remove('launch');
+  document.getElementById('entryMission').classList.remove('unlocked');
+  document.body.style.overflow = 'hidden';
+  renderMission();
 }
 
-function renderGK() {
-  if (gkIndex >= gkQuestions.length) {
-    gkTopicEl.textContent = 'Done';
-    const pct = gkScore / gkQuestions.length;
+function renderMission() {
+  missionDots.forEach((d, i) => {
+    d.classList.toggle('done', i < missionIndex);
+    d.classList.toggle('current', i === missionIndex);
+  });
+  missionMsgEl.textContent = '';
+  missionMsgEl.className = 'mission-msg';
+  const item = missionQuestions[missionIndex];
+  missionQEl.textContent = item.q;
+  missionOptsEl.innerHTML = '';
+  item.options.forEach((optText, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.textContent = optText;
+    btn.addEventListener('click', () => {
+      if (i === item.a) {
+        btn.classList.add('correct');
+        missionOptsEl.querySelectorAll('.opt').forEach(b => b.disabled = true);
+        missionMsgEl.textContent = 'Correct!';
+        missionMsgEl.className = 'mission-msg correct';
+        const rect = btn.getBoundingClientRect();
+        confettiBurst(rect.left + rect.width / 2, rect.top);
+        missionIndex++;
+        setTimeout(() => {
+          if (missionIndex >= MISSION_LEN) {
+            missionDots.forEach(d => d.classList.add('done'));
+            missionMsgEl.textContent = 'Launching... 🚀';
+            document.getElementById('missionRocket').classList.add('launch');
+            setTimeout(() => {
+              document.getElementById('entryMission').classList.add('unlocked');
+              document.body.style.overflow = '';
+              startQuiz();
+            }, 900);
+          } else {
+            renderMission();
+          }
+        }, 800);
+      } else {
+        btn.classList.add('wrong');
+        btn.disabled = true;
+        missionMsgEl.textContent = 'Not quite — try another answer!';
+        missionMsgEl.className = 'mission-msg wrong';
+      }
+    });
+    missionOptsEl.appendChild(btn);
+  });
+}
+
+document.getElementById('replayBtn').addEventListener('click', startMission);
+startMission();
+
+// ---------- Science Questions quiz ----------
+const scienceBank = [
+  { topic: 'Space', q: 'How many planets are there in our solar system?', options: ['7', '8', '9', '10'], a: 1 },
+  { topic: 'Space', q: 'Which planet is known as the Red Planet?', options: ['Venus', 'Mars', 'Jupiter', 'Saturn'], a: 1 },
+  { topic: 'Space', q: 'Which planet is famous for its rings?', options: ['Saturn', 'Mercury', 'Earth', 'Mars'], a: 0 },
+  { topic: 'Space', q: 'What is the closest star to Earth?', options: ['Proxima Centauri', 'Polaris', 'Sirius', 'The Sun'], a: 3 },
+  { topic: 'Space', q: 'Which is the largest planet in our solar system?', options: ['Earth', 'Mars', 'Jupiter', 'Venus'], a: 2 },
+  { topic: 'Body', q: 'How many bones does an adult human body have?', options: ['186', '206', '226', '246'], a: 1 },
+  { topic: 'Body', q: 'Which part of the body pumps blood?', options: ['Lungs', 'Brain', 'Heart', 'Liver'], a: 2 },
+  { topic: 'Body', q: 'How many chambers does the human heart have?', options: ['2', '3', '4', '5'], a: 2 },
+  { topic: 'Body', q: 'Which sense organ helps us hear?', options: ['Eyes', 'Ears', 'Nose', 'Skin'], a: 1 },
+  { topic: 'Body', q: 'Which organ do you use to see?', options: ['Ears', 'Eyes', 'Nose', 'Tongue'], a: 1 },
+  { topic: 'Chemistry', q: 'What is the chemical symbol for water?', options: ['H2O', 'CO2', 'O2', 'NaCl'], a: 0 },
+  { topic: 'Chemistry', q: 'What gas do humans breathe in to survive?', options: ['Carbon dioxide', 'Nitrogen', 'Oxygen', 'Helium'], a: 2 },
+  { topic: 'Chemistry', q: 'What state of matter is ice?', options: ['Gas', 'Liquid', 'Solid', 'Plasma'], a: 2 },
+  { topic: 'Chemistry', q: 'What is the boiling point of water in Celsius?', options: ['50', '90', '100', '150'], a: 2 },
+  { topic: 'Chemistry', q: 'What is the center of an atom called?', options: ['Electron', 'Nucleus', 'Proton', 'Orbit'], a: 1 },
+  { topic: 'Biology', q: 'What gas do plants absorb from the air to make food?', options: ['Oxygen', 'Carbon dioxide', 'Nitrogen', 'Hydrogen'], a: 1 },
+  { topic: 'Biology', q: 'What do bees make?', options: ['Milk', 'Honey', 'Silk', 'Wax only'], a: 1 },
+  { topic: 'Biology', q: 'What do caterpillars turn into?', options: ['Bees', 'Butterflies', 'Moths only', 'Beetles'], a: 1 },
+  { topic: 'Biology', q: 'What do we call animals that only eat plants?', options: ['Carnivores', 'Omnivores', 'Herbivores', 'Predators'], a: 2 },
+  { topic: 'Biology', q: 'What is the study of living things called?', options: ['Physics', 'Chemistry', 'Biology', 'Geology'], a: 2 },
+  { topic: 'Physics', q: 'How many legs does a spider have?', options: ['6', '8', '10', '4'], a: 1 },
+  { topic: 'Physics', q: 'What force pulls objects toward Earth?', options: ['Magnetism', 'Gravity', 'Friction', 'Tension'], a: 1 },
+  { topic: 'Nature', q: 'Which bird cannot fly?', options: ['Sparrow', 'Ostrich', 'Eagle', 'Pigeon'], a: 1 },
+  { topic: 'Nature', q: 'Which is the fastest land animal?', options: ['Lion', 'Horse', 'Cheetah', 'Leopard'], a: 2 },
+];
+
+const QUIZ_LEN = 10;
+let qQuestions = [], qIndex = 0, qScore = 0;
+const qQuestionEl = document.getElementById('qQuestion');
+const qOptionsEl = document.getElementById('qOptions');
+const qTopicEl = document.getElementById('qTopic');
+const qNumEl = document.getElementById('qNum');
+const qTotalEl = document.getElementById('qTotal');
+const qScoreEl = document.getElementById('qScore');
+const qBestEl = document.getElementById('qBest');
+const qNextBtn = document.getElementById('qNext');
+let qBest = Number(localStorage.getItem('dr_science_best') || 0);
+qBestEl.textContent = qBest;
+qTotalEl.textContent = QUIZ_LEN;
+
+function startQuiz() {
+  qQuestions = shuffle(scienceBank).slice(0, QUIZ_LEN);
+  qIndex = 0;
+  qScore = 0;
+  qScoreEl.textContent = qScore;
+  renderQuiz();
+}
+
+function renderQuiz() {
+  if (qIndex >= qQuestions.length) {
+    qTopicEl.textContent = 'Done';
+    const pct = qScore / qQuestions.length;
     const starCount = pct >= 0.9 ? 3 : pct >= 0.6 ? 2 : 1;
     const stars = '⭐'.repeat(starCount) + '☆'.repeat(3 - starCount);
-    gkQuestionEl.innerHTML = `Quiz complete! 🎉<br>You scored <b>${gkScore}/${gkQuestions.length}</b>`;
-    gkOptionsEl.innerHTML = `<div class="star-rating">${stars}</div>`;
-    if (gkScore > gkBest) {
-      gkBest = gkScore;
-      localStorage.setItem('dr_gk_best', gkBest);
-      gkBestEl.textContent = gkBest;
+    qQuestionEl.innerHTML = `Quiz complete! 🎉<br>You scored <b>${qScore}/${qQuestions.length}</b>`;
+    qOptionsEl.innerHTML = `<div class="star-rating">${stars}</div>`;
+    if (qScore > qBest) {
+      qBest = qScore;
+      localStorage.setItem('dr_science_best', qBest);
+      qBestEl.textContent = qBest;
     }
-    gkNextBtn.textContent = 'Play Again';
-    gkNextBtn.style.display = 'inline-block';
-    gkNextBtn.onclick = startGK;
+    qNextBtn.textContent = 'Play Again';
+    qNextBtn.style.display = 'inline-block';
+    qNextBtn.onclick = startQuiz;
     return;
   }
-  const item = gkQuestions[gkIndex];
-  gkNumEl.textContent = gkIndex + 1;
-  gkTopicEl.textContent = item.topic;
-  gkQuestionEl.textContent = item.q;
-  gkOptionsEl.innerHTML = '';
-  gkNextBtn.style.display = 'none';
+  const item = qQuestions[qIndex];
+  qNumEl.textContent = qIndex + 1;
+  qTopicEl.textContent = item.topic;
+  qQuestionEl.textContent = item.q;
+  qOptionsEl.innerHTML = '';
+  qNextBtn.style.display = 'none';
 
   item.options.forEach((optText, i) => {
     const btn = document.createElement('button');
     btn.className = 'opt';
     btn.textContent = optText;
-    btn.addEventListener('click', () => selectGK(i, item));
-    gkOptionsEl.appendChild(btn);
+    btn.addEventListener('click', () => selectQuiz(i, item));
+    qOptionsEl.appendChild(btn);
   });
 }
 
-function selectGK(choice, item) {
-  const btns = gkOptionsEl.querySelectorAll('.opt');
+function selectQuiz(choice, item) {
+  const btns = qOptionsEl.querySelectorAll('.opt');
   btns.forEach((b, i) => {
     b.disabled = true;
     if (i === item.a) b.classList.add('correct');
     else if (i === choice) b.classList.add('wrong');
   });
   if (choice === item.a) {
-    gkScore++;
+    qScore++;
     const rect = btns[choice].getBoundingClientRect();
     confettiBurst(rect.left + rect.width / 2, rect.top);
   }
-  gkScoreEl.textContent = gkScore;
-  gkNextBtn.textContent = 'Next Question →';
-  gkNextBtn.style.display = 'inline-block';
-  gkNextBtn.onclick = () => { gkIndex++; renderGK(); };
+  qScoreEl.textContent = qScore;
+  qNextBtn.textContent = 'Next Question →';
+  qNextBtn.style.display = 'inline-block';
+  qNextBtn.onclick = () => { qIndex++; renderQuiz(); };
 }
 </script>
 </body>
