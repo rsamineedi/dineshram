@@ -149,15 +149,27 @@
   .about-card .about-bio { color: var(--muted); font-size: 0.98rem; line-height: 1.7; margin: 0 0 1.3rem; }
   .interest-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-bottom: 1.4rem; }
   .interest-tag {
-    display: inline-flex; align-items: center; gap: 0.35rem;
+    display: inline-flex; align-items: center; gap: 0.4rem;
     font-size: 0.85rem; font-weight: 600; color: var(--teal-dark);
-    background: var(--teal-tint); padding: 0.4rem 0.9rem; border-radius: 999px;
+    background: var(--teal-tint); padding: 0.4rem 0.9rem 0.4rem 0.7rem; border-radius: 999px;
+  }
+  .interest-tag svg { width: 16px; height: 16px; flex-shrink: 0; }
+  .icon {
+    fill: none; stroke: currentColor; stroke-width: 1.7;
+    stroke-linecap: round; stroke-linejoin: round;
   }
   .fact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; text-align: left; }
   .fact-list li {
+    display: flex; align-items: flex-start; gap: 0.8rem;
     background: var(--panel-2); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
     padding: 0.7rem 1rem; font-size: 0.92rem; color: var(--ink);
   }
+  .fact-icon {
+    flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
+    background: var(--teal-tint); color: var(--teal); display: flex;
+    align-items: center; justify-content: center; margin-top: 0.05rem;
+  }
+  .fact-icon svg { width: 16px; height: 16px; }
 
   main { max-width: 700px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
   @media (max-width: 720px) { main { padding: 1.75rem 1.25rem 3rem; } header.site { padding: 1.1rem 1.25rem; } }
@@ -385,6 +397,37 @@
 </head>
 <body>
 
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-robot" viewBox="0 0 24 24">
+    <rect x="4" y="8" width="16" height="11" rx="2"/>
+    <path d="M12 8V5"/>
+    <circle cx="12" cy="3.4" r="1.3" fill="currentColor" stroke="none"/>
+    <circle cx="9" cy="13" r="1.1" fill="currentColor" stroke="none"/>
+    <circle cx="15" cy="13" r="1.1" fill="currentColor" stroke="none"/>
+    <path d="M9 17h6M1 12v3M23 12v3"/>
+  </symbol>
+  <symbol id="icon-gear" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="3"/>
+    <path d="M19.4 13a7.4 7.4 0 000-2l2-1.2-2-3.4-2.3.9a7.6 7.6 0 00-1.7-1L15 4h-4l-.4 2.3a7.6 7.6 0 00-1.7 1l-2.3-.9-2 3.4L6.6 11a7.4 7.4 0 000 2l-2 1.2 2 3.4 2.3-.9c.5.4 1.1.75 1.7 1L9 20h4l.4-2.3c.6-.25 1.2-.6 1.7-1l2.3.9 2-3.4z"/>
+  </symbol>
+  <symbol id="icon-flask" viewBox="0 0 24 24">
+    <path d="M9 3h6M10 3v5.5L4.8 17a2 2 0 001.7 3h11a2 2 0 001.7-3L14 8.5V3"/>
+    <path d="M7.5 14h9"/>
+  </symbol>
+  <symbol id="icon-rocket" viewBox="0 0 24 24">
+    <path d="M12 2c3 2 5 6 4 11l-2 3h-4l-2-3c-1-5 1-9 4-11z"/>
+    <circle cx="12" cy="9" r="1.6" fill="currentColor" stroke="none"/>
+    <path d="M8 13l-3 3 4-1M16 13l3 3-4-1"/>
+    <path d="M10 18c.3 2 1 3 2 4 1-1 1.7-2 2-4"/>
+  </symbol>
+  <symbol id="icon-city" viewBox="0 0 24 24">
+    <path d="M4 21V9l3-2v14M7 21V5l4-2v18M11 21V10l4 2v9M15 21v-8l4 1v7"/>
+  </symbol>
+  <symbol id="icon-wrench" viewBox="0 0 24 24">
+    <path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2z"/>
+  </symbol>
+</svg>
+
 <div class="bg-decor">
   <img class="atom" src="assets/atom.svg" alt="">
   <img class="planet" src="assets/planet.svg" alt="">
@@ -418,17 +461,17 @@
       <img class="about-avatar" src="dinesh-avatar.png" alt="Dinesh Ram">
       <h3>Hi, I'm Dinesh Ram! 👋</h3>
       <p class="about-sub">9 years old · Chicago, IL</p>
-      <p class="about-bio">I'm a curious kid who loves figuring out how things work — from the gears inside a machine to the planets way out in space. When I'm not building something, I'm probably reading about it, taking it apart, or asking "but why?" one more time.</p>
+      <p class="about-bio">I'm curious about how things work. I love robots, machines, science, and space. I like building things, experimenting with ideas, and taking things apart to see what's inside. And when something catches my interest, I usually have a lot of questions!</p>
       <div class="interest-tags">
-        <span class="interest-tag">🤖 Robots</span>
-        <span class="interest-tag">⚙️ Machines</span>
-        <span class="interest-tag">🔬 Science</span>
-        <span class="interest-tag">🚀 Space</span>
+        <span class="interest-tag"><svg class="icon"><use href="#icon-robot"/></svg> Robots</span>
+        <span class="interest-tag"><svg class="icon"><use href="#icon-gear"/></svg> Machines</span>
+        <span class="interest-tag"><svg class="icon"><use href="#icon-flask"/></svg> Science</span>
+        <span class="interest-tag"><svg class="icon"><use href="#icon-rocket"/></svg> Space</span>
       </div>
       <ul class="fact-list">
-        <li>🏙️ I live in Chicago and love how the city lights up at night — it looks like it's made for a robot movie.</li>
-        <li>🔧 My favorite thing to do is build stuff — the messier the parts pile, the better the invention.</li>
-        <li>🌌 My dream job is either a robotics engineer or an astronaut. Maybe both!</li>
+        <li><span class="fact-icon"><svg class="icon"><use href="#icon-city"/></svg></span> I live in Chicago and love how the city lights up at night — it looks like it's made for a robot movie.</li>
+        <li><span class="fact-icon"><svg class="icon"><use href="#icon-wrench"/></svg></span> My favorite thing to do is build stuff — the messier the parts pile, the better the invention.</li>
+        <li><span class="fact-icon"><svg class="icon"><use href="#icon-rocket"/></svg></span> My dream job is either a robotics engineer or an astronaut. Maybe both!</li>
       </ul>
     </article>
   </div>
